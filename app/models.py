@@ -13,8 +13,25 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     # bio = db.Column(db.Text, nullable=False)
 
-    # attr_name = db.relationship('className', backref='reference of this tables entire object when queried by attr_name in 'className' table')
-    
+    # attr_name = db.relationship('className', backref='reference of this tables entire object when queried by attr_name in 'className' class Model')
+    # back_populates = must do in both, attr_name & back_populates = 'other_attr_name' are opposites in their respective Classes
+
+    listing = db.relationship(
+        'Listing',
+        back_populates='owner',
+        cascade='all, delete'
+    )
+    booking = db.relationship(
+        'Booking',
+        back_populates='guest',
+        cascade='all, delete'
+    )
+    review = db.relationship(
+        'Review',
+        back_populates='guest',
+        cascade='all, delete'
+    )
+
 
     @property
     def password(self):
@@ -53,6 +70,22 @@ class Listing(db.Model):
     longitude = db.Column(db.Float, nullable=False)
     price = db.Column(db.Integer, nullable=False)
 
+    owner = db.relationship(
+        'User',
+        back_populates='listing',
+        cascade='all, delete'
+    )
+    booking = db.relationship(
+        'Booking',
+        back_populates='listing',
+        cascade='all, delete-orphan'
+    )
+    review = db.relationship(
+        'Review',
+        back_populates='listing',
+        cascade='all, delete-orphan'
+    )
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -76,16 +109,27 @@ class Booking(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     listing_id = db.Column(db.Integer, db.ForeignKey('listings.id') nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id') nullable=False)
+    guest_id = db.Column(db.Integer, db.ForeignKey('users.id') nullable=False)
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=False)
     num_guests = db.Column(db.Integer, nullable=False)
+
+    guest = db.relationship(
+        'User',
+        back_populates='booking',
+        cascade='all, delete'
+    )
+    listing = db.relationship(
+        'Listing',
+        back_populates='booking',
+        cascade='all, delete'
+    )
 
     def to_dict(self):
         return {
             'id': self.id,
             'listing_id': self.listing_id,
-            'user_id': self.user_id,
+            'guest_id': self.guest_id,
             'start_date': self.start_date,
             'end_date': self.end_date,
             'num_guests': self.num_guests
@@ -100,6 +144,17 @@ class Review(db.Model):
     guest_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.Text, nullable=False)
+
+    guest = db.relationship(
+        'User',
+        back_populates='review',
+        cascade='all, delete'
+    )
+    listing = db.relationship(
+        'Listing',
+        back_populates='review',
+        cascade='all, delete'
+    )
 
     def to_dict(self):
         return {
