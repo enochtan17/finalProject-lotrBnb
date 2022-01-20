@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField, TextAreaField, DecimalField
 from wtforms.validators import DataRequired
 
-class NewListingForm(FlaskForm):
+class ListingForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
     address1 = StringField('address1', validators=[DataRequired()])
@@ -14,3 +14,4 @@ class NewListingForm(FlaskForm):
     latitude = DecimalField('latitude', validators=[DataRequired()])
     longitude = DecimalField('longitude', validators=[DataRequired()])
     price = IntegerField('price', validators=[DataRequired()])
+    image_url = StringField('image_url', validators=[DataRequired()])

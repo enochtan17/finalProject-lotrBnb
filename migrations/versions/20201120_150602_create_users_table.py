@@ -42,6 +42,7 @@ def upgrade():
     sa.Column('latitude', sa.Float(), nullable=False)
     sa.Column('longitude', sa.Float(),nullable=False)
     sa.Column('price', sa.Integer(), nullable=False)
+    sa.Column('image_url', sa.String(length=255), nullable=False)
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'])
     sa.PrimaryKeyConstraint('id')
     )

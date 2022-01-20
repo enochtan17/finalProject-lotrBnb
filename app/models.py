@@ -69,6 +69,7 @@ class Listing(db.Model):
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
 
     owner = db.relationship(
         'User',
