@@ -98,7 +98,7 @@ class Listing(db.Model):
             'zipcode': self.zipcode,
             'latitude': self.latitude,
             'longitude': self.longitude,
-            'price': self.price
+            'price': self.price,
             'image_url': self.image_url
         }
 
@@ -107,8 +107,8 @@ class Booking(db.Model):
     __tablename__ = 'bookings'
 
     id = db.Column(db.Integer, primary_key=True)
-    listing_id = db.Column(db.Integer, db.ForeignKey('listings.id') nullable=False)
-    guest_id = db.Column(db.Integer, db.ForeignKey('users.id') nullable=False)
+    listing_id = db.Column(db.Integer, db.ForeignKey('listings.id'), nullable=False)
+    guest_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=False)
     num_guests = db.Column(db.Integer, nullable=False)

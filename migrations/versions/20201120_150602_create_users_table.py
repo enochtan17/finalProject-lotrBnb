@@ -29,30 +29,30 @@ def upgrade():
     )
 
     op.create_table('listings',
-    sa.Column('id', sa.Integer(), nullable=False)
-    sa.Column('owner_id', sa.Integer(), nullable=False)
-    sa.Column('name', sa.String(length=100), nullable=False)
-    sa.Column('description', sa.Text(), nullable=False)
-    sa.Column('address', sa.String(length=255), nullable=False)
-    sa.Column('city', sa.String(length=100), nullable=False)
-    sa.Column('country', sa.String(length=100), nullable=False)
-    sa.Column('latitude', sa.Float(), nullable=False)
-    sa.Column('longitude', sa.Float(),nullable=False)
-    sa.Column('price', sa.Integer(), nullable=False)
-    sa.Column('image_url', sa.String(length=255), nullable=False)
-    sa.ForeignKeyConstraint(['owner_id'], ['users.id'])
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('owner_id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=100), nullable=False),
+    sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('address', sa.String(length=255), nullable=False),
+    sa.Column('city', sa.String(length=100), nullable=False),
+    sa.Column('country', sa.String(length=100), nullable=False),
+    sa.Column('latitude', sa.Float(), nullable=False),
+    sa.Column('longitude', sa.Float(),nullable=False),
+    sa.Column('price', sa.Integer(), nullable=False),
+    sa.Column('image_url', sa.String(length=255), nullable=False),
+    sa.ForeignKeyConstraint(['owner_id'], ['users.id']),
     sa.PrimaryKeyConstraint('id')
     )
 
     op.create_table('bookings',
-    sa.Column('id', sa.Integer(), nullable=False)
-    sa.Column('listing_id', sa.Integer(), nullable=False)
-    sa.Column('guest_id', sa.Integer(), nullable=False)
-    sa.Column('start_date', sa.DateTime(), nullable=False)
-    sa.Column('end_date', sa.DateTime(), nullable=False)
-    sa.Column('num_guests', sa.Integer(), nullable=False)
-    sa.ForeignKeyConstraint(['listing_id'], ['listings.id'])
-    sa.ForeignKeyConstraint(['guest_id'], ['users.id'])
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('listing_id', sa.Integer(), nullable=False),
+    sa.Column('guest_id', sa.Integer(), nullable=False),
+    sa.Column('start_date', sa.DateTime(), nullable=False),
+    sa.Column('end_date', sa.DateTime(), nullable=False),
+    sa.Column('num_guests', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['listing_id'], ['listings.id']),
+    sa.ForeignKeyConstraint(['guest_id'], ['users.id']),
     sa.PrimaryKeyConstraint('id')
     )
 

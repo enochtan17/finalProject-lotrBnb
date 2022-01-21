@@ -2,15 +2,15 @@ from app.models import db, Listing
 
 def seed_listings():
     rivendell = Listing(
-        owner_id = 7
-        name = 'Imladris'
-        description = 'Secluded sanctuary in a beautiful hidden valley. Come rest under the protection of Elven magic and enjoy a peace of mind you cannot experience anywhere else in Middle Earth. Hike along the deep river valley and gaze upon breathtaking waterfalls. Three meals a day and live serene music included.'
-        address = '1697 Peredhil Way'
-        city = 'Rivendell'
-        country = 'Eriador'
-        latitude = -41.06
-        longitude = 175.19
-        price = 120
+        owner_id = 7,
+        name = 'Imladris',
+        description = 'Secluded sanctuary in a beautiful hidden valley. Come rest under the protection of Elven magic and enjoy a peace of mind you cannot experience anywhere else in Middle Earth. Hike along the deep river valley and gaze upon breathtaking waterfalls. Three meals a day and live serene music included.',
+        address = '1697 Peredhil Way',
+        city = 'Rivendell',
+        country = 'Eriador',
+        latitude = -41.06,
+        longitude = 175.19,
+        price = 120,
         image_url = 'https://www.wallpapertip.com/wmimgs/54-540978_lord-of-the-rings-rivendell.png'
     )
 
