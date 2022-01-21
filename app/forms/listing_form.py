@@ -15,3 +15,8 @@ class ListingForm(FlaskForm):
     longitude = DecimalField('longitude', validators=[DataRequired()])
     price = IntegerField('price', validators=[DataRequired()])
     image_url = StringField('image_url', validators=[DataRequired()])
+
+
+class EditListingForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[DataRequired()])

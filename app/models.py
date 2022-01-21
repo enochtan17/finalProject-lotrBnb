@@ -102,6 +102,7 @@ class Listing(db.Model):
             'latitude': self.latitude,
             'longitude': self.longitude,
             'price': self.price
+            'image_url': self.image_url
         }
 
 
