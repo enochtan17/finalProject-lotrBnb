@@ -28,10 +28,10 @@ def add_booking(listingId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         booking = Booking(
-            listing_id = listingId
-            guest_id = current_user.id
-            start_date = form.start_date.data
-            end_date = form.end_date.data
+            listing_id = listingId,
+            guest_id = current_user.id,
+            start_date = form.start_date.data,
+            end_date = form.end_date.data,
             num_guests = form.num_guests.data
         )
         db.session.add(booking)
@@ -54,7 +54,8 @@ def edit_booking(id):
         booking.num_guests = form.num_guests.data
         db.session.commit()
         return booking.to_dict()
-    return {}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 
 # DELETE a booking

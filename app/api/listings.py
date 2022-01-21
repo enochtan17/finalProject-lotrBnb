@@ -38,16 +38,16 @@ def newListing():
         listing = Listing(
             owner_id = current_user.id,
             name = form.name.data,
-            description = form.description.data
-            address1 = form.address1.data
-            address2 = form.address2.data
-            city = form.city.data
-            state = form.state.data
-            country = form.country.data
-            zipcode = form.zipcode.data
-            latitude = form.latitude.data
-            longitude = form.longitude.data
-            price = form.price.data
+            description = form.description.data,
+            address1 = form.address1.data,
+            address2 = form.address2.data,
+            city = form.city.data,
+            state = form.state.data,
+            country = form.country.data,
+            zipcode = form.zipcode.data,
+            latitude = form.latitude.data,
+            longitude = form.longitude.data,
+            price = form.price.data,
             image_url = form.image_url.data
         )
         db.session.add(listing)
@@ -70,7 +70,7 @@ def edit_listing(id):
         listing.description = form.description.data
         db.session.commit()
         return listing.to_dict()
-    return {}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # DELETE listing
