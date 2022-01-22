@@ -1,9 +1,12 @@
-
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import LogoutButton from './auth/LogoutButton'
+import { reducer } from '../store/session'
+import { useSelector } from 'react-redux'
 
 const NavBar = () => {
+  const userState = useSelector(state => state.session.user)
+
   return (
     <nav>
       <ul>
@@ -12,27 +15,27 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
+        { !userState && (
+          <>
+            <li>
+              <NavLink to='/login' exact={true} activeClassName='active'>
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                Sign Up
+              </NavLink>
+            </li>
+          </>
+        )}
+        { userState && (
         <li>
           <LogoutButton />
-        </li>
+        </li> )}
       </ul>
     </nav>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

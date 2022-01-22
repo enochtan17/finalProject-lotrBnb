@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
@@ -49,6 +49,7 @@ const SignUpForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <Link to="/login">Already have an account?</Link>
       <div>
         <label>User Name</label>
         <input
