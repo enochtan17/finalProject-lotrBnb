@@ -15,18 +15,13 @@ def user_exists(form, field):
 
 def password_matches(form, field):
     # Checking if password matches
-    print('form........', form.data['password'])
-    print('field........', field.data)
     password = field.data
     email = form.data['email']
     user = User.query.filter(User.email == email).first()
     if not user:
         raise ValidationError('User does not exist.')
     if not user.check_password(password):
-        print('pw.....', password)
-        print('hash pw ....', user.hashed_password)
-        print('res...', user.check_password(password))
-        raise ValidationError('Password was incorrect.')
+        raise ValidationError('Credentials were incorrect.')
 
 
 class LoginForm(FlaskForm):
