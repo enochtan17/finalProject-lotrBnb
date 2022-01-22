@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
         cascade='all, delete'
     )
 
-
+    # below sets the table column name 'password' under the User model to self.hashed_password, which is set on line 13, and generates a hashed pw under the .setter.
     @property
     def password(self):
         return self.hashed_password
@@ -41,6 +41,7 @@ class User(db.Model, UserMixin):
     def password(self, password):
         self.hashed_password = generate_password_hash(password)
 
+    # checks the hash of self.password's value against the hash of the password variable's value
     def check_password(self, password):
         return check_password_hash(self.password, password)
 

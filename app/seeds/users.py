@@ -3,6 +3,7 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    # hashed_password fields must be named 'password', because that's what the hash is 're' set as in the User model under the .setter property
     demo = User(
         username='Demo', email='demo@lotr.io', password='password')
     frodo = User(
