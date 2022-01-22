@@ -4,37 +4,37 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@lotr.io', hashed_password='password')
+        username='Demo', email='demo@lotr.io', password='password')
     frodo = User(
-        username='Frodo', email='frodo@lotr.io', hashed_password='password')
+        username='Frodo', email='frodo@lotr.io', password='password')
     gandalf = User(
-        username='Gandalf', email='gandalf@lotr.io', hashed_password='password')
+        username='Gandalf', email='gandalf@lotr.io', password='password')
     aragorn = User(
-        username='Aragorn', email='aragorn@lotr.io', hashed_password='password')
+        username='Aragorn', email='aragorn@lotr.io', password='password')
     legolas = User(
-        username='Legolas', email='legolas@lotr.io', hashed_password='password')
+        username='Legolas', email='legolas@lotr.io', password='password')
     gimli = User(
-        username='Gimli', email='gimli@lotr.io', hashed_password='password')
+        username='Gimli', email='gimli@lotr.io', password='password')
     elrond = User(
-        username='Elrond', email='elrond@lotr.io', hashed_password='password')
+        username='Elrond', email='elrond@lotr.io', password='password')
     sauron = User(
-        username='Sauron', email='sauron@lotr.io', hashed_password='password')
+        username='Sauron', email='sauron@lotr.io', password='password')
     saruman = User(
-        username='Saruman', email='saruman@lotr.io', hashed_password='password')
+        username='Saruman', email='saruman@lotr.io', password='password')
     bilbo = User(
-        username='Bilbo', email='bilbo@lotr.io', hashed_password='password')
+        username='Bilbo', email='bilbo@lotr.io', password='password')
     galadriel = User(
-        username='Galadriel', email='galadriel@lotr.io', hashed_password='password')
+        username='Galadriel', email='galadriel@lotr.io', password='password')
     faramir = User(
-        username='Faramir', email='faramir@lotr.io', hashed_password='password')
+        username='Faramir', email='faramir@lotr.io', password='password')
     dainironfoot = User(
-        username='Dain Ironfoot', email='dainironfoot@lotr.io', hashed_password='password')
+        username='Dain Ironfoot', email='dainironfoot@lotr.io', password='password')
     thranduil = User(
-        username='Thranduil', email='thranduil@lotr.io', hashed_password='password')
+        username='Thranduil', email='thranduil@lotr.io', password='password')
     tombombadil = User(
-        username='Tom Bombadil', email='tombombadil@lotr.io', hashed_password='password')
+        username='Tom Bombadil', email='tombombadil@lotr.io', password='password')
     shelob = User(
-        username='Shelob', email='shelob@lotr.io', hashed_password='password')
+        username='Shelob', email='shelob@lotr.io', password='password')
 
 
     db.session.add(demo)
