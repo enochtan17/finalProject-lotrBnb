@@ -11,7 +11,7 @@ def seed_listings():
         latitude = -41.06,
         longitude = 175.19,
         price = 120,
-        image_url = 'https://www.wallpapertip.com/wmimgs/54-540978_lord-of-the-rings-rivendell.png'
+        image_url = 'https://static.wikia.nocookie.net/lotr/images/5/53/Rivendell_-_The_Hobbit.PNG'
     )
 
     # demo_listing2 = Listing(

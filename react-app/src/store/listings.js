@@ -1,6 +1,5 @@
 const GET_LISTINGS = 'listings/GET_LISTINGS'
 const ADD_LISTING = 'listings/ADD_LISTING'
-const EDIT_LISTING = 'listings/EDIT_LISTING'
 const DELETE_LISTING = 'listings/DELETE_LISTING'
 
 export const getListings = listings => ({
@@ -10,11 +9,6 @@ export const getListings = listings => ({
 
 export const addListing = listing => ({
     type: ADD_LISTING,
-    listing
-})
-
-export const editListing = listing => ({
-    type: EDIT_LISTING,
     listing
 })
 

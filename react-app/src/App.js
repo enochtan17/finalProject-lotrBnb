@@ -5,6 +5,8 @@ import LoginForm from './components/auth/LoginForm'
 import SignUpForm from './components/auth/SignUpForm'
 import Splash from './components/Splash'
 import NavBar from './components/NavBar'
+import SingleListing from './components/SingleListing'
+import Listings from './components/Listings'
 import { authenticate } from './store/session'
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
         <Route path='/' element={<Splash />}></Route>
         <Route path='/login' element={<LoginForm />}></Route>
         <Route path='/sign-up' element={<SignUpForm />}></Route>
+        <Route path='/listings' element={<Listings />}></Route>
+        <Route path='/listings/:id' element={<SingleListing />}></Route>
       </Routes>
     </BrowserRouter>
   )

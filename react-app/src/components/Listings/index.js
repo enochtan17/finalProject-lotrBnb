@@ -12,7 +12,7 @@ function Listings() {
     const listings = useSelector(state => state.listingReducer)
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const hist = useNavigate()
 
     // useEffect(() => {
     //     if (!userState) return navigate('/NotFound')
@@ -39,6 +39,9 @@ function Listings() {
                         className='listingData'
                         id={listing.id}
                         key={listing.id}
+                        onClick={() => {
+                            hist(`/listings/${listing.id}`)
+                        }}
                     >
                         <h3>{listing?.name}</h3>
                         <p>{listing?.description}</p>
@@ -48,15 +51,15 @@ function Listings() {
                         <p>{listing?.price}</p>
                         <img
                             src={listing.image_url}
-                            alt=''
+                            alt='img not found'
                         ></img>
-                        <div
+                        {/* <div
                             className="delete"
                             id={listing.id}
-                            // onClick={handleDelete}
+                            onClick={handleDelete}
                         >
                             Delete <i className="fas fa-trash-alt"></i>
-                        </div>
+                        </div> */}
                     </div>
                 )
             }) : null }
