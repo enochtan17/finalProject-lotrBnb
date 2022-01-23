@@ -32,6 +32,7 @@ export const getAllListings = () => async dispatch => {
     }
 }
 
+
 export const addNewListing = (name, description, address, city, country, latitude, longitude, price, image_url) => async dispatch => {
 
     const res = await fetch(`/api/listings/`, {
@@ -59,12 +60,25 @@ export const addNewListing = (name, description, address, city, country, latitud
     }
 }
 
+export const removeListing = (listingId) => async dispatch => {
+    const res = await fetch(`/api/listings/delete/${listingId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        const listing = await res.json()
+        dispatch(deleteListing(listing))
+    }
+}
+
 export default function listingReducer(state = [], action) {
     switch(action.type) {
         case GET_LISTINGS:
             return action.listings
         case ADD_LISTING:
             return [ ...state, action.listing ]
+        case DELETE_LISTING:
+            return state.filter(listing => listing.id === action.listing.id)
         default:
             return state
     }

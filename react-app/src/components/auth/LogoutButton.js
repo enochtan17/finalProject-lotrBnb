@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 // import { useNavigate } from 'react-router-dom'
 import { logout } from '../../store/session'
@@ -7,8 +7,6 @@ import { logout } from '../../store/session'
 const LogoutButton = () => {
   const dispatch = useDispatch()
   // const navigate = useNavigate()
-
-  const [isLogged, setIsLogged] = useState(false)
 
   const onLogout = async (e) => {
     await dispatch(logout())

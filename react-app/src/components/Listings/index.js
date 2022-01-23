@@ -1,29 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { removeListing } from '../../store/listings'
 
 import NewListingButton from '../NewListingButton'
 
 import { getAllListings } from '../../store/listings'
 
 function Listings() {
-    const userState = useSelector(state => state.session.user)
+    // const userState = useSelector(state => state.session.user)
     const listings = useSelector(state => state.listingReducer)
 
     const dispatch = useDispatch()
-    const hist = useNavigate()
+    const navigate = useNavigate()
 
-    // state variables here later
-
-    useEffect(() => {
-        if (!userState) return hist('/NotFound')
-    }, [])
+    // useEffect(() => {
+    //     if (!userState) return navigate('/NotFound')
+    // }, [])
 
     useEffect(() => {
         dispatch(getAllListings())
     }, [dispatch])
 
+    // const handleDelete = async e => {
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    //     await dispatch(removeListing(3))
+    //     navigate('/')
+    // }
 
     return (
         <>
@@ -44,7 +48,15 @@ function Listings() {
                         <p>{listing?.price}</p>
                         <img
                             src={listing.image_url}
+                            alt=''
                         ></img>
+                        <div
+                            className="delete"
+                            id={listing.id}
+                            // onClick={handleDelete}
+                        >
+                            Delete <i className="fas fa-trash-alt"></i>
+                        </div>
                     </div>
                 )
             }) : null }
