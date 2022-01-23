@@ -32,19 +32,39 @@ export const getAllListings = () => async dispatch => {
     }
 }
 
-export default function listingReducer(state = { listings: [] }, action) {
+export const addNewListing = (name, description, address, city, country, latitude, longitude, price, image_url) => async dispatch => {
+
+    const res = await fetch(`/api/listings/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name,
+            description,
+            address,
+            city,
+            country,
+            latitude,
+            longitude,
+            price,
+            image_url
+        })
+    })
+
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(addListing(data))
+        return data
+    }
+}
+
+export default function listingReducer(state = [], action) {
     switch(action.type) {
         case GET_LISTINGS:
-            const allListings = []
-            action.listings.forEach(listing => {
-                allListings.push(listing)
-            })
-            console.log('state in reducer', allListings)
-            const newState = {
-                ...state,
-                listings: [ ...allListings ]
-            }
-            return newState
+            return action.listings
+        case ADD_LISTING:
+            return [ ...state, action.listing ]
         default:
             return state
     }

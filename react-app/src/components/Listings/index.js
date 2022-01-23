@@ -3,16 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
-// import components here later
+import NewListingButton from '../NewListingButton'
 
 import { getAllListings } from '../../store/listings'
 
 function Listings() {
     const userState = useSelector(state => state.session.user)
-    const listings = useSelector(state => state.listingReducer.listings)
-    const testState = useSelector(state => state)
-    console.log('listing state....', listings)
-    console.log('testState...', testState)
+    const listings = useSelector(state => state.listingReducer)
 
     const dispatch = useDispatch()
     const hist = useNavigate()
@@ -31,20 +28,23 @@ function Listings() {
     return (
         <>
             <h3>Listings</h3>
-            {listings ? listings.map(e => {
+            <NewListingButton />
+            {listings ? listings.map(listing => {
                 return (
-                    <div className='listingData' key={e.id}>
-                        <div>
-                            <h3>{e?.name}</h3>
-                            <p>{e?.description}</p>
-                            <p>{e?.address}</p>
-                            <p>{e?.city}</p>
-                            <p>{e?.country}</p>
-                            <p>{e?.price}</p>
-                            <img
-                                src={e.image_url}
-                            ></img>
-                        </div>
+                    <div
+                        className='listingData'
+                        id={listing.id}
+                        key={listing.id}
+                    >
+                        <h3>{listing?.name}</h3>
+                        <p>{listing?.description}</p>
+                        <p>{listing?.address}</p>
+                        <p>{listing?.city}</p>
+                        <p>{listing?.country}</p>
+                        <p>{listing?.price}</p>
+                        <img
+                            src={listing.image_url}
+                        ></img>
                     </div>
                 )
             }) : null }
