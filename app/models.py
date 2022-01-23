@@ -113,13 +113,11 @@ class Booking(db.Model):
 
     guest = db.relationship(
         'User',
-        back_populates='booking',
-        cascade='all, delete'
+        back_populates='booking'
     )
     listing = db.relationship(
         'Listing',
-        back_populates='booking',
-        cascade='all, delete'
+        back_populates='booking'
     )
 
     def to_dict(self):
@@ -144,13 +142,11 @@ class Review(db.Model):
 
     guest = db.relationship(
         'User',
-        back_populates='review',
-        cascade='all, delete'
+        back_populates='review'
     )
     listing = db.relationship(
         'Listing',
-        back_populates='review',
-        cascade='all, delete'
+        back_populates='review'
     )
 
     def to_dict(self):
