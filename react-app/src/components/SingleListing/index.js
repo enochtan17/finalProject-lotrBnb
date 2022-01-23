@@ -14,9 +14,6 @@ function SingleListing() {
     const [isOwner, setIsOwner] = useState(false)
 
     useEffect(() => {
-        console.log('userId....', user.id)
-        console.log('ownerId....', listing.owner_id)
-        console.log('singleListingReducer', listing)
         if (user.id === listing.owner_id) {
             setIsOwner(true)
         } else {
