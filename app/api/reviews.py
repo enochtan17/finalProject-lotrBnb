@@ -12,7 +12,7 @@ review_routes = Blueprint('reviews', __name__)
 
 # GET all reviews for a listing
 
-@review_routes.route('/listing/<int:listingId')
+@review_routes.route('/listing/<int:listingId>')
 @login_required
 def get_reviews(listingId):
     reviews = Review.query.filter(Review.listing_id == listingId).all()
@@ -21,7 +21,7 @@ def get_reviews(listingId):
 
 # POST review
 
-@review_routes.route('/listing/<int:listingId', methods=['POST'])
+@review_routes.route('/listing/<int:listingId>', methods=['POST'])
 @login_required
 def add_review(listingId):
     form = ReviewForm()
@@ -30,7 +30,7 @@ def add_review(listingId):
         review = Review(
             listing_id = listingId,
             guest_id = current_user.id,
-            rating = form.rating.data
+            rating = form.rating.data,
             comment = form.comment.data
         )
         db.session.add(review)

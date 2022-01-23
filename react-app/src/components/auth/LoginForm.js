@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { login } from '../../store/session'
 
 const LoginForm = () => {
@@ -32,7 +32,7 @@ const LoginForm = () => {
   }
 
   if (user) {
-    return <Redirect to='/' />
+    return <Navigate to='/' />
   }
 
   return (

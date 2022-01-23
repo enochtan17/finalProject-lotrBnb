@@ -9,12 +9,28 @@ from app.models import db, User
 
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.listings import listing_routes
+from .api.bookings import booking_routes
+from .api.reviews import review_routes
 
-from .seeds import seed_commands
+from app.seeds import seed_commands
 
-from .config import Config
+from app.config import Config
 
 app = Flask(__name__)
+
+# api = Api(app)
+
+# @app.after_request
+# def after_request(response):
+#   response.headers.add('Access-Control-Allow-Origin', '*')
+#   response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+#   response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+#   return response
+
+
+# if __name__ == '__main__':
+#     app.run()
 
 # Setup login manager
 login = LoginManager(app)
@@ -34,6 +50,9 @@ app.config.from_object(Config)
 
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(listing_routes, url_prefix='/api/listings')
+app.register_blueprint(booking_routes, url_prefix='/api/bookings')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
 
 db.init_app(app)
 Migrate(app, db)

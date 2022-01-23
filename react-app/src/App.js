@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import LoginForm from './components/auth/LoginForm'
 import SignUpForm from './components/auth/SignUpForm'
@@ -25,17 +25,11 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
-      <Switch>
-        <Route path='/' exact={true}>
-          <Splash />
-        </Route>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path='/' element={<Splash />}></Route>
+        <Route path='/login' element={<LoginForm />}></Route>
+        <Route path='/sign-up' element={<SignUpForm />}></Route>
+      </Routes>
     </BrowserRouter>
   )
 }

@@ -11,7 +11,7 @@ listing_routes = Blueprint('listings', __name__)
 
 # GET all listings
 
-@listing_routes.route('/')
+@listing_routes.route('/', methods=['GET'])
 @login_required
 def all_listings():
     listings = Listing.query.all()
@@ -21,7 +21,7 @@ def all_listings():
 # GET one listing
 
 @listing_routes.route('/<int:id>', methods=['GET'])
-@login_required
+# @login_required
 def get_one_listing(id):
     listing = Listing.query.get(id)
     return listing.to_dict()
@@ -30,10 +30,10 @@ def get_one_listing(id):
 # POST one listing
 
 @listing_routes.route('/', methods=['POST'])
-@login_required
+# @login_required
 def newListing():
     form = ListingForm()
-    form['csrf_toekn'].data = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.name.data:
         listing = Listing(
             owner_id = current_user.id,
@@ -57,7 +57,7 @@ def newListing():
 # EDIT listing
 
 @listing_routes.route('/edit/<int:id>', methods=['PUT'])
-@login_required
+# @login_required
 def edit_listing(id):
     listing = Listing.query.get(id)
     form = EditListingForm()
@@ -73,7 +73,7 @@ def edit_listing(id):
 # DELETE listing
 
 @listing_routes.route('/delete/<int:id>', methods=['DELETE'])
-@login_required
+# @login_required
 def delete_listing(id):
     listing = Listing.query.filter_by(id=id).first()
     db.session.delete(listing)
