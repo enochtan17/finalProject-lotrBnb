@@ -15,10 +15,11 @@ function Reviews() {
 
     const [rating, setRating] = useState(null)
     const [comment, setComment] = useState('')
+    const [reviewId, setReviewId] = useState(null)
 
     useEffect(() => {
         dispatch(getReviews(id))
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(retrieveUsers())
@@ -48,12 +49,13 @@ function Reviews() {
         e.preventDefault()
         e.stopPropagation()
         dispatch(editReviewOn())
+        setReviewId(e.target.id)
     }
 
     return (
         <>
             <h3>Reviews</h3>
-            <EditReviewForm />
+            <EditReviewForm reviewId={ reviewId } />
             <div className='reviews-container'>
                 { reviews?.map(review => {
                         return (
@@ -67,8 +69,10 @@ function Reviews() {
                                 <p>{review.comment}</p>
                                 { reviewOwner(review.guest_id) && (
                                     <button
+                                        id={review.id}
                                         className='editbutton'
-                                        onClick={editReview}>
+                                        onClick={editReview}
+                                    >
                                     <i className='fas fa-edit'></i> Edit
                                 </button>
                                 )}

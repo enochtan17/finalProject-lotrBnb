@@ -16,7 +16,7 @@ function SingleListing() {
     const [isOwner, setIsOwner] = useState(false)
 
     useEffect(() => {
-        if (user.id === listing.owner_id) {
+        if (user?.id === listing.owner_id) {
             setIsOwner(true)
         } else {
             setIsOwner(false)

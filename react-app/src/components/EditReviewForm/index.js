@@ -5,7 +5,7 @@ import { removeReview, updateReview } from '../../store/reviews'
 import { editReviewOff } from '../../store/showEditReviewForm'
 import './editReviewForm.css'
 
-function EditReviewForm() {
+function EditReviewForm({ reviewId }) {
     const dispatch = useDispatch()
     const showForm = useSelector(state => state.editReviewFormReducer)
 
@@ -14,7 +14,7 @@ function EditReviewForm() {
 
     const editReview = async e => {
         await dispatch(updateReview(
-            //reviewId,
+            reviewId,
             rating,
             comment
         ))
@@ -22,10 +22,8 @@ function EditReviewForm() {
 
     const handleDelete = async e => {
         e.preventDefault()
-        e.stopPropagatino()
-        await dispatch(removeReview(
-            //reviewId
-        ))
+        e.stopPropagation()
+        await dispatch(removeReview(reviewId))
     }
 
     return (
@@ -74,7 +72,6 @@ function EditReviewForm() {
                     </div>
                     <div className='listingButton'>
                         <div className='delete'
-                            // id={ reviewId }
                             onClick={handleDelete}>
                             Delete <i className='fas fa-trash-alt'></i>
                         </div>

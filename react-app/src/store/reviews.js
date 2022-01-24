@@ -88,7 +88,7 @@ export default function reviewReducer(state = [], action) {
             return [ ...state, action.review ]
         case EDIT_REVIEW:
             return state.map(review => {
-                if (review.id === action.reviewId) {
+                if (review.id === action.review.id) {
                     return action.review
                 }
                 return review
