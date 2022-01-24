@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { getListing } from '../../store/singlelisting'
 import { editListingOn } from '../../store/showEditListingForm'
 import EditListingForm from '../EditListingForm'
+import Reviews from '../Reviews'
 
 function SingleListing() {
     const listing = useSelector(state => state.singleListingReducer)
@@ -70,7 +71,7 @@ function SingleListing() {
                     ></img>
                 </div>
             )}
-            {/* <Reviews /> */}
+            <Reviews />
         </>
     )
 }
