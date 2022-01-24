@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getListings } from '../../store/listings'
 import { getListing } from '../../store/singlelisting'
+import { editListingOn } from '../../store/showEditListingForm'
+import EditListingForm from '../EditListingForm'
 
 function SingleListing() {
     const listing = useSelector(state => state.singleListingReducer)
@@ -32,12 +33,20 @@ function SingleListing() {
 
     const editListing = e => {
         e.preventDefault()
+        e.stopPropagation()
+        dispatch(editListingOn())
+    }
+
+    const handleDelete = e => {
+        e.preventDefault()
+        e.stopPropagation()
+
     }
 
     return (
         <>
             <h3>{listing.name}</h3>
-            {/* <NewListingButton /> */}
+            <EditListingForm />
             <div className="backbuttoncontainer">
                 <button className="backbutton" onClick={backButton}>
                     <i className="fas fa-arrow-left"></i> Back
@@ -53,10 +62,9 @@ function SingleListing() {
                     <div
                         className="delete"
                         id={listing.id}
-                        // onClick={handleDelete}
                         >
-                        <button>
-                            <i className="fas fa-trash-alt"></i> Delete
+                        <button className='deletebutton' onClick={handleDelete}>
+                            <i className="fas fa-trash-alt" ></i> Delete
                         </button>
                     </div>
                 </div> )}
@@ -76,6 +84,7 @@ function SingleListing() {
                     ></img>
                 </div>
             )}
+            {/* <Reviews /> */}
         </>
     )
 }

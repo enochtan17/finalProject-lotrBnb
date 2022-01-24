@@ -11,9 +11,10 @@ export const loadOneListing = listing => ({
     listing
 })
 
-export const editListing = listing => ({
+export const editListing = (listing, listingId) => ({
     type: EDIT_LISTING,
-    listing
+    listing,
+    listingId
 })
 
 export const getListing = id => async dispatch => {
@@ -25,10 +26,37 @@ export const getListing = id => async dispatch => {
     }
 }
 
-export default function singleListingReducer(state = [], action) {
+export const editListingThunk = (listingId,
+                                    name,
+                                    description
+                                ) => async dispatch => {
+    const res = await fetch(`/api/listings/edit/${listingId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name,
+            description
+        })
+    })
+
+    if (res.ok) {
+        const listing = await res.json()
+        dispatch(editListing(listing, listingId))
+    }
+}
+
+export default function singleListingReducer(state = {}, action) {
     switch(action.type) {
         case GET_ONE_LISTING:
             return action.listing
+        case EDIT_LISTING:
+            return {
+                ...state,
+                'name': action.listing.name,
+                'description': action.listing.description
+            }
     default:
         return state
     }

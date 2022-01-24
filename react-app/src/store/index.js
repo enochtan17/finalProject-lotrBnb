@@ -4,12 +4,14 @@ import session from './session'
 import listingReducer from './listings'
 import addListingFormReducer from './showAddListingForm'
 import singleListingReducer from './singlelisting'
+import editListingFormReducer from './showEditListingForm'
 
 const rootReducer = combineReducers({
   session,
   listingReducer,
+  singleListingReducer,
   addListingFormReducer,
-  singleListingReducer
+  editListingFormReducer
 })
 
 
