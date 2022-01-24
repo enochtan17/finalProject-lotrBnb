@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
-import NewListingButton from '../NewListingButton'
-
 import { getAllListings } from '../../store/listings'
+import NewListingButton from '../NewListingButton'
+import NewListingForm from '../NewListingForm'
+
 
 function Listings() {
     // const userState = useSelector(state => state.session.user)
@@ -32,6 +32,7 @@ function Listings() {
         <>
             <h3>Listings</h3>
             <NewListingButton />
+            <NewListingForm />
             {listings ? listings.map(listing => {
                 return (
                     <div
