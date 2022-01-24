@@ -2,14 +2,16 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import session from './session'
 import listingReducer from './listings'
-import addListingFormReducer from './showAddListingForm'
 import singleListingReducer from './singlelisting'
+import reviewReducer from './reviews'
+import addListingFormReducer from './showAddListingForm'
 import editListingFormReducer from './showEditListingForm'
 
 const rootReducer = combineReducers({
   session,
   listingReducer,
   singleListingReducer,
+  reviewReducer,
   addListingFormReducer,
   editListingFormReducer
 })
