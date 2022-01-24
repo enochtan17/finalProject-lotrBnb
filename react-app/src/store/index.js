@@ -6,6 +6,7 @@ import singleListingReducer from './singlelisting'
 import reviewReducer from './reviews'
 import addListingFormReducer from './showAddListingForm'
 import editListingFormReducer from './showEditListingForm'
+import editReviewFormReducer from './showEditReviewForm'
 import usersReducer from './users'
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   reviewReducer,
   addListingFormReducer,
   editListingFormReducer,
+  editReviewFormReducer,
   usersReducer
 })
 

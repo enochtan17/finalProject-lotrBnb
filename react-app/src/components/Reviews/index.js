@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getReviews, addReview, editReview } from '../../store/reviews'
+import { editReviewOn } from '../../store/showEditReviewForm'
 import { retrieveUsers } from '../../store/users'
+import EditReviewForm from '../EditReviewForm'
 
 function Reviews() {
     const reviews = useSelector(state => state.reviewReducer)
@@ -43,12 +45,15 @@ function Reviews() {
     }
 
     const editReview = async e => {
-        
+        e.preventDefault()
+        e.stopPropagation()
+        dispatch(editReviewOn())
     }
 
     return (
         <>
             <h3>Reviews</h3>
+            <EditReviewForm />
             <div className='reviews-container'>
                 { reviews?.map(review => {
                         return (
