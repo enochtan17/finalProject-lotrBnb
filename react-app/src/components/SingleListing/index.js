@@ -37,12 +37,6 @@ function SingleListing() {
         dispatch(editListingOn())
     }
 
-    const handleDelete = e => {
-        e.preventDefault()
-        e.stopPropagation()
-
-    }
-
     return (
         <>
             <h3>{listing.name}</h3>
@@ -57,14 +51,6 @@ function SingleListing() {
                     <div className='editbuttoncontainer'>
                         <button className='editbutton' onClick={editListing}>
                             <i className='fas fa-edit'></i> Edit
-                        </button>
-                    </div>
-                    <div
-                        className="delete"
-                        id={listing.id}
-                        >
-                        <button className='deletebutton' onClick={handleDelete}>
-                            <i className="fas fa-trash-alt" ></i> Delete
                         </button>
                     </div>
                 </div> )}

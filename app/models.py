@@ -71,18 +71,17 @@ class Listing(db.Model):
 
     owner = db.relationship(
         'User',
-        back_populates='listing',
-        cascade='all, delete'
+        back_populates='listing'
     )
     booking = db.relationship(
         'Booking',
         back_populates='listing',
-        cascade='all, delete-orphan'
+        cascade='all, delete'
     )
     review = db.relationship(
         'Review',
         back_populates='listing',
-        cascade='all, delete-orphan'
+        cascade='all, delete'
     )
 
     def to_dict(self):

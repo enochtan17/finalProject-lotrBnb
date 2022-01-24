@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { editListingOff } from '../../store/showEditListingForm'
 import { editListingThunk } from '../../store/singlelisting'
+import { removeListing } from '../../store/listings'
 import './editListingForm.css'
 
 function EditListingForm() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const showForm = useSelector(state => state.editListingFormReducer)
     const { id } = useParams()
 
@@ -19,6 +21,13 @@ function EditListingForm() {
             listingName,
             description
         ))
+    }
+
+    const handleDelete = async e => {
+        e.preventDefault()
+        e.stopPropagation()
+        await dispatch(removeListing(id))
+        navigate('/listings')
     }
 
     return (
@@ -66,6 +75,9 @@ function EditListingForm() {
                         ></input>
                     </div>
                     <div className='listingButton'>
+                        <div className='delete' id={ id } onClick={handleDelete}>
+                            Delete <i className='fas fa-trash-alt'></i>
+                        </div>
                         <p
                             className='cancel'
                             onClick={e => {
