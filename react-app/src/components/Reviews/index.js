@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getReviews, addReview } from '../../store/reviews'
+import { getReviews, addReview, editReview } from '../../store/reviews'
 import { retrieveUsers } from '../../store/users'
 
 function Reviews() {
     const reviews = useSelector(state => state.reviewReducer)
     const users = useSelector(state => state.usersReducer.users)
+    const loggedUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
     const { id } = useParams()
 
@@ -37,6 +38,14 @@ function Reviews() {
         await dispatch(addReview(id, rating, comment))
     }
 
+    const reviewOwner = (guestId) => {
+        return loggedUser.id === guestId
+    }
+
+    const editReview = async e => {
+        
+    }
+
     return (
         <>
             <h3>Reviews</h3>
@@ -51,6 +60,13 @@ function Reviews() {
                                 <p>{getUsername(review.guest_id)}</p>
                                 <p>{review.rating}</p>
                                 <p>{review.comment}</p>
+                                { reviewOwner(review.guest_id) && (
+                                    <button
+                                        className='editbutton'
+                                        onClick={editReview}>
+                                    <i className='fas fa-edit'></i> Edit
+                                </button>
+                                )}
                             </div>
                         )
                     })
