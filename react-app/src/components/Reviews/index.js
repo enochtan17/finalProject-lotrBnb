@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getReviews } from '../../store/reviews'
+import { getReviews, addReview } from '../../store/reviews'
 import { retrieveUsers } from '../../store/users'
 
 function Reviews() {
-    const reviews = useSelector(state => state.reviewReducer.reviews)
+    const reviews = useSelector(state => state.reviewReducer)
     const users = useSelector(state => state.usersReducer.users)
-    console.log(users)
     const dispatch = useDispatch()
     const { id } = useParams()
+
+    const [rating, setRating] = useState(null)
+    const [comment, setComment] = useState('')
 
     useEffect(() => {
         dispatch(getReviews(id))
@@ -21,8 +23,7 @@ function Reviews() {
 
     const getUsername = guestId => {
         let username
-
-        for (let i = 0; i < users.length; i++) {
+        for (let i = 0; i < users?.length; i++) {
             let userId = users[i].id
             if (userId === guestId) {
                 username = users[i].username
@@ -32,12 +33,15 @@ function Reviews() {
         return 'Failed to retrieve Username'
     }
 
+    const newReview = async e => {
+        await dispatch(addReview(id, rating, comment))
+    }
+
     return (
         <>
             <h3>Reviews</h3>
             <div className='reviews-container'>
-                { reviews && (
-                    reviews.map(review => {
+                { reviews?.map(review => {
                         return (
                             <div
                                 className='review-data'
@@ -50,7 +54,43 @@ function Reviews() {
                             </div>
                         )
                     })
-                )}
+                }
+            <div className='comment-box'>
+                <form
+                    className='reviews-form'
+                    onSubmit={async(e) => {
+                        e.preventDefault()
+                        if (rating && comment) {
+                            await newReview()
+                            setRating('')
+                            setComment('')
+                        }
+                    }}
+                >
+                    <h3>Add a Review</h3>
+                    <label>Rating</label>
+                    <input
+                        placeholder='Rating'
+                        value={rating}
+                        onChange={e => {
+                            setRating(e.target.value)
+                        }}
+                    ></input>
+                    <label>Comment</label>
+                    <input
+                        placeholder='Comment'
+                        value={comment}
+                        onChange={e => {
+                            setComment(e.target.value)
+                        }}
+                    ></input>
+                    <button className='submit-review' disabled={
+                        !rating || !comment
+                    }>
+                        Submit review
+                    </button>
+                </form>
+            </div>
             </div>
         </>
     )

@@ -29,7 +29,7 @@ export const getReviews = listingId => async dispatch => {
 
     if (res.ok) {
         const reviews = await res.json()
-        dispatch(loadReviews(reviews))
+        dispatch(loadReviews(reviews.reviews))
     }
 }
 
@@ -86,13 +86,13 @@ export default function reviewReducer(state = [], action) {
             return action.reviews
         case ADD_REVIEW:
             return [ ...state, action.review ]
-        case EDIT_REVIEW:
-            return state.map(review => {
-                if (review.id === action.reviewId) {
-                    return action.review
-                }
-                return review
-            })
+        // case EDIT_REVIEW:
+        //     return state.map(review => {
+        //         if (review.id === action.reviewId) {
+        //             return action.review
+        //         }
+        //         return review
+        //     })
         case REMOVE_REVIEW:
             return state.filter(review => review.id !== action.review.id)
         default:
