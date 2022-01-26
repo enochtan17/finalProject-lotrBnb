@@ -1,0 +1,133 @@
+.photo-body {
+    background: url('../../zzimages/hobbitholes.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast, pixelated;
+    background-attachment: scroll;
+    height: 561px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.photo-body h1 {
+    margin: 0px;
+    color: whitesmoke;
+    padding-bottom: 75px;
+    font-family: fantasy;
+}
+
+.inspiration-header h1 {
+    padding-top: 64px;
+    padding-bottom: 10px;
+    margin: 0px 48px;
+    font-family: fantasy;
+    color: rgb(69, 69, 69);
+}
+
+.inspiration-boxes {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 364px;
+    padding: 0px 45px;
+}
+
+.inspiration-boxes img {
+    width: 250px;
+    height: 150px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.inspiration-boxes h3, .inspiration-boxes p {
+    margin: 0px;
+    font-family: fantasy;
+    color: whitesmoke;
+    padding-left: 15px;
+}
+
+.inspiration-boxes h3 {
+    padding-top: 20px;
+}
+
+.inspiration-boxes p {
+    font-size: 14px;
+}
+
+.inspire-box1 {
+    height: 300px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: rgb(113, 160, 52);
+}
+
+.inspire-box2 {
+    height: 300px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: indianred;
+}
+
+.inspire-box3 {
+    height: 300px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: rgb(92, 201, 205);
+}
+
+.inspire-box4 {
+    height: 300px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: rgb(92, 164, 205);
+}
+
+.hr-line {
+    margin: 0px 40px;
+}
+
+.about-header {
+    margin: 10px 48px 0px 48px;
+    font-family: fantasy;
+    color: rgb(69, 69, 69);
+}
+
+.about-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 48px 15px 48px;
+}
+
+.gitlink, .linkedinlink, .copyright {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    font-family: fantasy;
+    font-weight: bolder;
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(69, 69, 69);
+    margin: 5px;
+}
+
+.gitlogo, .linkedinlogo {
+    height: 19px;
+    width: 19px;
+    border-radius: 30%;
+    margin: 0px 0px 5px 5px;
+}
+
+.copyright img {
+    margin-right: 3px;
+}
+
+/* @media screen and (min-width: 480px) {
+    #leftsidebar {width: 200px; float: left;}
+    #main {margin-left: 216px;}
+} */

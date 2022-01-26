@@ -7,7 +7,7 @@ import NewListingForm from '../NewListingForm'
 
 
 function Listings() {
-    // const userState = useSelector(state => state.session.user)
+    const userState = useSelector(state => state.session.user)
     const listings = useSelector(state => state.listingReducer)
 
     const dispatch = useDispatch()
@@ -30,6 +30,7 @@ function Listings() {
 
     return (
         <>
+            <h2 className='bilbo-quote'>It's a dangerous business, {userState.username}, going out of your door. You step into the Road, and if you don't keep your feet, there is no telling where you might be swept off to.</h2>
             <h3>Listings</h3>
             <NewListingButton />
             <NewListingForm />

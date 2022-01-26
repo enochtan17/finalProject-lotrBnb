@@ -2,13 +2,14 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Listings from '../Listings'
 import NewListingForm from '../NewListingForm'
+import OutsideHome from '../OutsideHome'
 
 const Splash = () => {
     const userState = useSelector(state => state.session.user)
 
     return (
         <>
-            <h1>Splash Home Page</h1>
+            { !userState && <OutsideHome />}
             <NewListingForm />
             { userState && <Listings />}
         </>
