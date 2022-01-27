@@ -29,14 +29,6 @@ function EditReviewForm({ reviewId }) {
     return (
         <>
             { showForm && (
-                <div
-                    className='blackout'
-                    onClick={e => {
-                        dispatch(editReviewOff())
-                    }}
-                ></div>
-            )}
-            { showForm && (
                 <form
                     className='listingForm'
                     onSubmit={async(e) => {

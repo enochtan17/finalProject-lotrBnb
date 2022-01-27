@@ -34,14 +34,6 @@ function EditListingForm() {
     return (
         <>
             { showForm && (
-                <div
-                    className='blackout'
-                    onClick={e => {
-                        dispatch(editListingOff())
-                    }}
-                ></div>
-            )}
-            { showForm && (
                 <form
                     className='listingForm'
                     onSubmit={async(e) => {

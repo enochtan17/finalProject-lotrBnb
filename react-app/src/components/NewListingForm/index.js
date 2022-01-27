@@ -43,14 +43,6 @@ function NewListingForm() {
     return (
         <>
             { showForm && (
-                <div
-                    className='blackout'
-                    onClick={e => {
-                        dispatch(addListingOff())
-                    }}
-                ></div>
-            )}
-            { showForm && (
                 <form
                     className='listingForm'
                     onSubmit={async(e) => {
