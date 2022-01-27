@@ -13,4 +13,5 @@
 
 .delete:hover {
     cursor: pointer;
+    color: rgb(201, 0, 0);
 }
