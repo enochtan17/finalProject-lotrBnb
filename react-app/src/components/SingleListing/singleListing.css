@@ -52,6 +52,7 @@
 
 .one-listing-left p {
     margin: 8px 0px 8px 25px;
+    padding-left: 5px;
     font-family: fantasy;
     font-weight: bolder;
     color: rgb(69, 69, 69);
@@ -67,4 +68,9 @@
 
 .one-listing-title-info h3 {
     margin-bottom: 0px;
+}
+
+.hr-title-info {
+    border: dotted 1px rgb(69, 69, 69);
+    border-style: none none dotted;
 }

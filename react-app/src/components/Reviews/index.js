@@ -50,6 +50,7 @@ function Reviews() {
         e.preventDefault()
         e.stopPropagation()
         dispatch(editReviewOn())
+        console.log('id', e.target)
         setReviewId(e.target.id)
     }
 
@@ -59,42 +60,41 @@ function Reviews() {
             <h3 className='reviews-header'>Reviews</h3>
             <EditReviewForm reviewId={ reviewId } />
             <div className='reviews-container'>
+                <div
+                className='review-grid'
+                >
                 { reviews?.map(review => {
-                        return (
-                            <div
-                                key={review.id}
-                                className='review-grid'
-                            >
-                                <div
-                                    className='review-data'
+                    return (
+                        <div
+                            key={review.id}
+                            className='review-data'
+                            id={review.id}
+                        >
+                            <p
+                                className='review-owner'
+                            >{getUsername(review.guest_id)}</p>
+                            <p
+                                className='review-rating'
+                            >{review.rating}</p>
+                            <p
+                                className='review-content'
+                            >{review.comment}</p>
+                            { reviewOwner(review.guest_id) && (
+                                <button
                                     id={review.id}
+                                    className='edit-review-button'
+                                    onClick={editReview}
                                 >
-                                    <p
-                                        className='review-owner'
-                                    >{getUsername(review.guest_id)}</p>
-                                    <p
-                                        className='review-rating'
-                                    >{review.rating}</p>
-                                    <p
-                                        className='review-content'
-                                    >{review.comment}</p>
-                                    { reviewOwner(review.guest_id) && (
-                                        <button
-                                            id={review.id}
-                                            className='edit-review-button'
-                                            onClick={editReview}
-                                        >
-                                        <i
-                                            className='fas fa-edit'
-                                            id={review.id}
-                                        ></i>
-                                    </button>
-                                    )}
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+                                <i
+                                    className='fas fa-edit'
+                                    id={review.id}
+                                ></i>
+                            </button>
+                            )}
+                        </div>
+                    )}
+                )}
+                </div>
                 <div className='comment-form-box'>
                     <form
                         className='reviews-form'
