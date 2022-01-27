@@ -1,0 +1,36 @@
+.review-hr {
+    margin: 25px 15px 5px 15px;
+}
+
+.reviews-header {
+    font-family: fantasy;
+    font-weight: bolder;
+    color: rgb(69, 69, 69);
+    margin: 0px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.review-grid {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill, 120px);
+    grid-row-gap: 1em;
+    grid-column-gap: 1em;
+}
+
+.review-data p {
+    font-family: fantasy;
+    font-weight: bolder;
+    color: rgb(69, 69, 69);
+    margin: 0px;
+}
+
+
+
+.comment-form-box {
+    margin: 25px;
+    padding-top: 30px;
+}

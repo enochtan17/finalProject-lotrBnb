@@ -55,68 +55,82 @@ function Reviews() {
 
     return (
         <>
-            <h3>Reviews</h3>
+            <hr className='review-hr'></hr>
+            <h3 className='reviews-header'>Reviews</h3>
             <EditReviewForm reviewId={ reviewId } />
             <div className='reviews-container'>
                 { reviews?.map(review => {
                         return (
                             <div
-                                className='review-data'
-                                id={review.id}
                                 key={review.id}
+                                className='review-grid'
                             >
-                                <p>{getUsername(review.guest_id)}</p>
-                                <p>{review.rating}</p>
-                                <p>{review.comment}</p>
-                                { reviewOwner(review.guest_id) && (
-                                    <button
-                                        id={review.id}
-                                        className='editbutton'
-                                        onClick={editReview}
-                                    >
-                                    <i className='fas fa-edit'></i> Edit
-                                </button>
-                                )}
+                                <div
+                                    className='review-data'
+                                    id={review.id}
+                                >
+                                    <p
+                                        className='review-owner'
+                                    >{getUsername(review.guest_id)}</p>
+                                    <p
+                                        className='review-rating'
+                                    >{review.rating}</p>
+                                    <p
+                                        className='review-content'
+                                    >{review.comment}</p>
+                                    { reviewOwner(review.guest_id) && (
+                                        <button
+                                            id={review.id}
+                                            className='edit-review-button'
+                                            onClick={editReview}
+                                        >
+                                        <i
+                                            className='fas fa-edit'
+                                            id={review.id}
+                                        ></i>
+                                    </button>
+                                    )}
+                                </div>
                             </div>
                         )
                     })
                 }
-            <div className='comment-box'>
-                <form
-                    className='reviews-form'
-                    onSubmit={async(e) => {
-                        e.preventDefault()
-                        if (rating && comment) {
-                            await newReview()
-                            setRating('')
-                            setComment('')
-                        }
-                    }}
-                >
-                    <h3>Add a Review</h3>
-                    <label>Rating</label>
-                    <input
-                        placeholder='Rating'
-                        value={rating}
-                        onChange={e => {
-                            setRating(e.target.value)
+                <div className='comment-form-box'>
+                    <form
+                        className='reviews-form'
+                        onSubmit={async(e) => {
+                            e.preventDefault()
+                            if (rating && comment) {
+                                await newReview()
+                                setRating('')
+                                setComment('')
+                            }
                         }}
-                    ></input>
-                    <label>Comment</label>
-                    <input
-                        placeholder='Comment'
-                        value={comment}
-                        onChange={e => {
-                            setComment(e.target.value)
-                        }}
-                    ></input>
-                    <button className='submit-review' disabled={
-                        !rating || !comment
-                    }>
-                        Submit review
-                    </button>
-                </form>
-            </div>
+                    >
+                        <h3>Add a Review</h3>
+                        <label>Rating</label>
+                        <input
+                            placeholder='Rating'
+                            value={rating}
+                            onChange={e => {
+                                setRating(e.target.value)
+                            }}
+                        ></input>
+                        <label>Comment</label>
+                        <input
+                            placeholder='Comment'
+                            value={comment}
+                            onChange={e => {
+                                setComment(e.target.value)
+                            }}
+                        ></input>
+                        <button className='submit-review' disabled={
+                            !rating || !comment
+                        }>
+                            Submit review
+                        </button>
+                    </form>
+                </div>
             </div>
         </>
     )
