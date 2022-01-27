@@ -12,7 +12,7 @@ With the loss / corruption of the Palantirs, residents of Middle Earth can now u
 - Werkzeug
 - WT Forms
 - CORS
-- PostgreSQL
+- Postgres
 - CSS
 - Heroku
 - Docker
