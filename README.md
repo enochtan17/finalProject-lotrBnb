@@ -1,8 +1,8 @@
-# Middle Earth BBnB
+# Middle Earth BBnB (Bed Breakfast & Second Breakfast)
 
 Website: https://lotrbnb-etan.herokuapp.com/
 
-With the loss / corruption of the Palantirs, residents of Middle Earth can now use this safe and secure app instead to see where they can vacation to. From the Blue Mountains to Haradwaith, from supper to second breakfast - we've got you covered!
+With the loss / corruption of the Palantirs, residents of Middle Earth can now use this safe and secure app instead to see where they can vacation to, or catch brief respite from their weary travels. From the Blue Mountains to Haradwaith, from supper to second breakfast - we've got you covered!
 
 ## Getting started
 
