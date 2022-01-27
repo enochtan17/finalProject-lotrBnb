@@ -4,11 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { removeReview, updateReview } from '../../store/reviews'
 import { editReviewOff } from '../../store/showEditReviewForm'
 import './editReviewForm.css'
+import '../NewListingForm/newListingForm.css'
 
 function EditReviewForm({ reviewId }) {
     const dispatch = useDispatch()
     const showForm = useSelector(state => state.editReviewFormReducer)
-
     const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
 

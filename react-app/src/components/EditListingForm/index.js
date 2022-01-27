@@ -5,6 +5,7 @@ import { editListingOff } from '../../store/showEditListingForm'
 import { editListingThunk } from '../../store/singlelisting'
 import { removeListing } from '../../store/listings'
 import './editListingForm.css'
+import '../NewListingForm/newListingForm.css'
 
 function EditListingForm() {
     const dispatch = useDispatch()
