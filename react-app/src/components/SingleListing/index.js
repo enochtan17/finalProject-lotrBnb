@@ -5,6 +5,7 @@ import { getListing } from '../../store/singlelisting'
 import { editListingOn } from '../../store/showEditListingForm'
 import EditListingForm from '../EditListingForm'
 import Reviews from '../Reviews'
+import './singleListing.css'
 
 function SingleListing() {
     const listing = useSelector(state => state.singleListingReducer)

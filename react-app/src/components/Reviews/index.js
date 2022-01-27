@@ -5,6 +5,7 @@ import { getReviews, addReview } from '../../store/reviews'
 import { editReviewOn } from '../../store/showEditReviewForm'
 import { retrieveUsers } from '../../store/users'
 import EditReviewForm from '../EditReviewForm'
+import './reviews.css'
 
 function Reviews() {
     const reviews = useSelector(state => state.reviewReducer)
