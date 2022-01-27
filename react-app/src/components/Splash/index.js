@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Listings from '../Listings'
 import NewListingForm from '../NewListingForm'
 import OutsideHome from '../OutsideHome'
-import './spalsh.css'
+import './splash.css'
 
 const Splash = () => {
     const userState = useSelector(state => state.session.user)
