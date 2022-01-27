@@ -13,7 +13,7 @@ const LogoutButton = () => {
     navigate('/')
   }
 
-  return <button onClick={onLogout} className='auth-button'><i class="fas fa-sign-out-alt"></i></button>
+  return <button onClick={onLogout} className='auth-button'><i className="fas fa-sign-out-alt"></i></button>
 }
 
 export default LogoutButton

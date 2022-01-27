@@ -15,7 +15,7 @@ const LoginForm = () => {
   const dispatch = useDispatch()
 
   const changeField = () => {
-    if (typePass == 'password') {
+    if (typePass === 'password') {
       setTypePass('text')
       setSauron(false)
     } else {
@@ -80,11 +80,13 @@ const LoginForm = () => {
           { sauron ? <img
             src={sauronIcon}
             id='toggle-password'
-            onClick={changeField}></img>
+            onClick={changeField}
+            alt=''></img>
             : <img
             src={eyeSlash}
             id='toggle-password'
-            onClick={changeField}></img>
+            onClick={changeField}
+            alt=''></img>
           }
         </div>
         <div className='login-button-container'>

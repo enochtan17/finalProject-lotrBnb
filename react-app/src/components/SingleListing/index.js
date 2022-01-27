@@ -21,11 +21,11 @@ function SingleListing() {
         } else {
             setIsOwner(false)
         }
-    }, [listing])
+    }, [listing, user?.id])
 
     useEffect(() => {
         dispatch(getListing(id))
-    }, [dispatch])
+    }, [dispatch, id])
 
     const backButton = e => {
         e.preventDefault()

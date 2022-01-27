@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
-import { getReviews, addReview, editReview } from '../../store/reviews'
+import { useParams } from 'react-router-dom'
+import { getReviews, addReview } from '../../store/reviews'
 import { editReviewOn } from '../../store/showEditReviewForm'
 import { retrieveUsers } from '../../store/users'
 import EditReviewForm from '../EditReviewForm'
@@ -13,17 +13,17 @@ function Reviews() {
     const dispatch = useDispatch()
     const { id } = useParams()
 
-    const [rating, setRating] = useState(null)
+    const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
-    const [reviewId, setReviewId] = useState(null)
+    const [reviewId, setReviewId] = useState('')
 
     useEffect(() => {
         dispatch(getReviews(id))
-    }, [dispatch])
+    }, [dispatch, id])
 
     useEffect(() => {
         dispatch(retrieveUsers())
-    }, [])
+    }, [dispatch])
 
     const getUsername = guestId => {
         let username

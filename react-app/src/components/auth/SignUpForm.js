@@ -19,7 +19,7 @@ const SignUpForm = () => {
   const dispatch = useDispatch()
 
   const changeField = () => {
-    if (typePass == 'password') {
+    if (typePass === 'password') {
       setTypePass('text')
       setSauron(false)
     } else {
@@ -30,7 +30,7 @@ const SignUpForm = () => {
   }
 
   const changeConfirm = () => {
-    if (typePassConfirm == 'password') {
+    if (typePassConfirm === 'password') {
       setTypePassConfirm('text')
       setSauronConfirm(false)
     } else {
@@ -109,11 +109,13 @@ const SignUpForm = () => {
           { sauron ? <img
             src={sauronIcon}
             id='toggle-password'
-            onClick={changeField}></img>
+            onClick={changeField}
+            alt=''></img>
             : <img
             src={eyeSlash}
             id='toggle-password'
-            onClick={changeField}></img>
+            onClick={changeField}
+            alt=''></img>
           }
         </div>
         <div className='label-input'>
@@ -128,11 +130,13 @@ const SignUpForm = () => {
           { sauronConfirm ? <img
             src={sauronIcon}
             id='toggle-password'
-            onClick={changeConfirm}></img>
+            onClick={changeConfirm}
+            alt=''></img>
             : <img
             src={eyeSlash}
             id='toggle-password'
-            onClick={changeConfirm}></img>
+            onClick={changeConfirm}
+            alt=''></img>
           }
         </div>
         <button className='login-demo-button' type='submit'>Sign Up</button>

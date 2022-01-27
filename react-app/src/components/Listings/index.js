@@ -27,12 +27,14 @@ function Listings() {
             <div className='listing-container'>
                 {listings ? listings.map(listing => {
                     return (
-                        <div className='each-listing-box'>
+                        <div
+                            className='each-listing-box'
+                            key={listing.id}
+                        >
                             <hr></hr>
                             <div
                                 className='listing-data'
                                 id={listing.id}
-                                key={listing.id}
                                 onClick={() => {
                                     hist(`/listings/${listing.id}`)
                                 }}

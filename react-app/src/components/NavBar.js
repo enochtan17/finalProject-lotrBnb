@@ -68,7 +68,7 @@ const NavBar = () => {
             </div>
             <div className='auth-button' onClick={goSignUp}>
               <NavLink to='/sign-up'>
-                <img src="https://img.icons8.com/external-bearicons-outline-color-bearicons/25/000000/external-sign-up-call-to-action-bearicons-outline-color-bearicons-1.png"/>
+                <img src="https://img.icons8.com/external-bearicons-outline-color-bearicons/25/000000/external-sign-up-call-to-action-bearicons-outline-color-bearicons-1.png" alt=''/>
               </NavLink>
             </div>
           </div>

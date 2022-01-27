@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams, useNavigate } from 'react-router-dom'
 import { removeReview, updateReview } from '../../store/reviews'
 import { editReviewOff } from '../../store/showEditReviewForm'
 import './editReviewForm.css'
