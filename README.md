@@ -4,6 +4,25 @@ Website: https://lotrbnb-etan.herokuapp.com/
 
 With the loss / corruption of the Palantirs, residents of Middle Earth can now use this safe and secure app instead to see where they can vacation to, or catch brief respite from their weary travels. From the Blue Mountains to Haradwaith, from supper to second breakfast - we've got you covered!
 
+## Technologies Used
+
+- React / Redux
+- Python
+- Flask - SQL Alchemy
+- Werkzeug
+- WT Forms
+- CORS
+- PostgreSQL
+- CSS
+- Heroku
+- Docker
+
+## Future Features
+
+- [] Dynamic search bar
+- [] More user interaction with Bookings
+- [] Amenities list, ability to search / sort by amenities
+
 ## Getting started
 
 1. Clone this repository 
