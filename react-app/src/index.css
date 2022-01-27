@@ -53,3 +53,91 @@ nav {
     font-family: fantasy;
     font-size: 24px;
 }
+
+.auth-header {
+    text-align: center;
+    font-family: fantasy;
+    color: rgb(69, 69, 69);
+}
+
+.auth-form {
+    margin: 15px 40px 0px 40px;
+    padding: 0px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.auth-form label {
+    font-family: fantasy;
+    color: rgb(69, 69, 69);
+    font-weight: bolder;
+}
+
+.login-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login-demo-button {
+    background-color: rgb(226, 226, 226);
+    border-radius: 15px;
+    padding: 10px;
+    font-family: fantasy;
+    font-size: 19px;
+    color: rgb(34, 70, 34);
+    font-weight: bolder;
+    padding: 5px 20px;
+    margin: 9px 25px;
+}
+
+.login-demo-button:hover {
+    cursor: pointer;
+    background-color: rgb(122, 122, 121);
+}
+
+.carousel {
+    margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(97, 110, 184);
+    font-family: fantasy;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.carousel:hover {
+    color: rgb(192, 84, 169);
+}
+
+.label-input input {
+    width: 250px;
+    height: 40px;
+    margin: 5px 0px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px black;
+}
+
+.label-input {
+    display: flex;
+    align-items: center;
+}
+
+#toggle-password {
+    height: 40px;
+    width: 48px;
+    margin-left: -50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.label-input input::placeholder {
+    font-family: fantasy;
+    font-weight: bolder;
+}
+
+.label-input input:hover {
+    box-shadow: 5px 5px 5px black;
+}

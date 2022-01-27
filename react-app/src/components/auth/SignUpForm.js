@@ -1,95 +1,144 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, Navigate } from 'react-router-dom';
-import { signUp } from '../../store/session';
+import { Link, Navigate } from 'react-router-dom'
+import { signUp } from '../../store/session'
+import sauronIcon from '../../zzimages/sauron_icon/favicon.ico'
+import eyeSlash from '../../zzimages/eye-slash-icon/favicon.ico'
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
+  const [errors, setErrors] = useState([])
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [repeatPassword, setRepeatPassword] = useState('')
+  const [typePass, setTypePass] = useState('password')
+  const [sauron, setSauron] = useState(true)
+  const [typePassConfirm, setTypePassConfirm] = useState('password')
+  const [sauronConfirm, setSauronConfirm] = useState(true)
+  const user = useSelector(state => state.session.user)
+  const dispatch = useDispatch()
+
+  const changeField = () => {
+    if (typePass == 'password') {
+      setTypePass('text')
+      setSauron(false)
+    } else {
+      setTypePass('password')
+      setSauron(true)
+    }
+    return
+  }
+
+  const changeConfirm = () => {
+    if (typePassConfirm == 'password') {
+      setTypePassConfirm('text')
+      setSauronConfirm(false)
+    } else {
+      setTypePassConfirm('password')
+      setSauronConfirm(true)
+    }
+    return
+  }
 
   const onSignUp = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password))
       if (data) {
         setErrors(data)
       }
     }
-  };
+  }
 
   const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
+    setUsername(e.target.value)
+  }
 
   const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+    setEmail(e.target.value)
+  }
 
   const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
+    setPassword(e.target.value)
+  }
 
   const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
+    setRepeatPassword(e.target.value)
+  }
 
   if (user) {
-    return <Navigate to='/'/>;
+    return <Navigate to='/'/>
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <Link to="/login">Already have an account?</Link>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
-  );
-};
+    <>
+      <h1 className='auth-header'>Register Account</h1>
+      <form onSubmit={onSignUp} className='auth-form'>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <Link to="/login" className='carousel'>Already have an account?</Link>
+        <div className='label-input'>
+          <input
+            type='text'
+            name='username'
+            placeholder='Username'
+            onChange={updateUsername}
+            value={username}
+          ></input>
+        </div>
+        <div className='label-input'>
+          <input
+            type='text'
+            name='email'
+            placeholder='Email'
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div className='label-input'>
+          <input
+            type={typePass}
+            name='password'
+            placeholder='Password'
+            onChange={updatePassword}
+            value={password}
+          ></input>
+          { sauron ? <img
+            src={sauronIcon}
+            id='toggle-password'
+            onClick={changeField}></img>
+            : <img
+            src={eyeSlash}
+            id='toggle-password'
+            onClick={changeField}></img>
+          }
+        </div>
+        <div className='label-input'>
+          <input
+            type={typePassConfirm}
+            name='repeat_password'
+            placeholder='Confirm Password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+          { sauronConfirm ? <img
+            src={sauronIcon}
+            id='toggle-password'
+            onClick={changeConfirm}></img>
+            : <img
+            src={eyeSlash}
+            id='toggle-password'
+            onClick={changeConfirm}></img>
+          }
+        </div>
+        <button className='login-demo-button' type='submit'>Sign Up</button>
+      </form>
+    </>
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm
