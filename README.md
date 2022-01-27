@@ -1,23 +1,24 @@
-# Flask React Project
+# Middle Earth BBnB
 
-This is the starter for the Flask React project.
+Website: https://lotrbnb-etan.herokuapp.com/
+
+With the loss / corruption of the Palantirs, residents of Middle Earth can now use this safe and secure app instead to see where they can vacation to. From the Blue Mountains to Haradwaith, from supper to second breakfast - we've got you covered!
 
 ## Getting started
 
-1. Clone this repository (only this branch)
-
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+1. Clone this repository 
 
 2. Install dependencies
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+      - ```cd app && 
+      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt```
+      
+      - ```cd react-app &&
+      npm install```
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
+   
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
 5. Get into your pipenv, migrate your database, seed your database, and run your flask app
@@ -34,11 +35,11 @@ This is the starter for the Flask React project.
    flask seed all
    ```
 
-   ```bash
+   ```
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+6. In the react-app folder, run ```npm start```.
 
 ***
 *IMPORTANT!*
@@ -106,29 +107,3 @@ hurt to run it again.
 
 11. Under Settings find "Config Vars" and add any additional/secret .env
 variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
