@@ -27,7 +27,7 @@ function Listings() {
             <div className='listing-container'>
                 {listings ? listings.map(listing => {
                     return (
-                        <>
+                        <div className='each-listing-box'>
                             <hr></hr>
                             <div
                                 className='listing-data'
@@ -45,14 +45,18 @@ function Listings() {
                                 </div>
                                 <div className='listing-right'>
                                     <h3>{listing?.name}</h3>
-                                    {/* <p>{listing?.description}</p>
-                                    <p>{listing?.address}</p>
-                                    <p>{listing?.city}</p>
-                                    <p>{listing?.country}</p> */}
+                                    <hr className='hr-under' ></hr>
+                                    <div className='listing-deets'>
+                                        <p>{listing?.capacity} guests</p>
+                                        <p>{listing?.bedrooms} bedrooms</p>
+                                        <p>{listing?.beds} beds</p>
+                                        <p>{listing?.baths} baths</p>
+                                    </div>
+                                    <hr className='hr-under' ></hr>
                                     <p>${listing?.price} / night</p>
                                 </div>
                             </div>
-                        </>
+                        </div>
                     )
                 }) : null }
             </div>

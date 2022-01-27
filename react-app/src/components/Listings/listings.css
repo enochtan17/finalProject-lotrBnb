@@ -2,6 +2,7 @@
     font-family: fantasy;
     text-align: center;
     padding: 0px 150px;
+    color: rgb(69, 69, 69);
 }
 
 .listings-hr {
@@ -11,14 +12,38 @@
 .listing-container {
     width: 700px;
     padding: 0px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+/* .each-listing-box {
+    height: 250px;
+} */
 
 .listing-data {
     display: flex;
+    border-radius: 10px;
 }
 
 .listing-left img {
     width: 300px;
     height: 200px;
     border-radius: 10px;
+}
+
+.listing-right {
+    margin: 0px 15px;
+    font-family: fantasy;
+    font-weight: bolder;
+    color: rgb(69, 69, 69);
+}
+
+.listing-right h3 {
+    margin-bottom: 0px;
+}
+
+.listing-data:hover {
+    cursor: pointer;
+    box-shadow: 5px -5px 8px rgb(69, 69, 69);
 }

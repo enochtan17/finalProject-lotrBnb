@@ -27,8 +27,7 @@ export const getAllListings = () => async dispatch => {
 }
 
 
-export const addNewListing = (name, description, address, city, country, latitude, longitude, price, image_url) => async dispatch => {
-
+export const addNewListing = (name, description, capacity, bedrooms, beds, baths, address, city, country, latitude, longitude, price, image_url) => async dispatch => {
     const res = await fetch(`/api/listings/`, {
         method: 'POST',
         headers: {
@@ -37,6 +36,10 @@ export const addNewListing = (name, description, address, city, country, latitud
         body: JSON.stringify({
             name,
             description,
+            capacity,
+            bedrooms,
+            beds,
+            baths,
             address,
             city,
             country,

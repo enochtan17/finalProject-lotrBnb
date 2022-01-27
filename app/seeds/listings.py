@@ -5,6 +5,10 @@ def seed_listings():
         owner_id = 7,
         name = 'Imladris',
         description = 'Secluded sanctuary in a beautiful hidden valley. Come rest under the protection of Elven magic and enjoy a peace of mind you cannot experience anywhere else in Middle Earth. Hike along the deep river valley and gaze upon breathtaking waterfalls. Three meals a day and live serene music included.',
+        capacity = 100,
+        bedrooms = 61,
+        beds = 84,
+        baths = 42,
         address = '1697 Peredhil Way',
         city = 'Rivendell',
         country = 'Eriador',
@@ -62,5 +66,5 @@ def seed_listings():
 
 
 def undo_listings():
-    db.session.execute('TRUNCATE servers RESTART IDENTITY CASCADE')
+    db.session.execute('TRUNCATE listings RESTART IDENTITY CASCADE')
     db.session.commit()

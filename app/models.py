@@ -61,6 +61,10 @@ class Listing(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
+    capacity = db.Column(db.Integer, nullable=False)
+    bedrooms = db.Column(db.Integer, nullable=False)
+    beds = db.Column(db.Integer, nullable=False)
+    baths = db.Column(db.Integer, nullable=False)
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(100), nullable=False)
@@ -90,6 +94,10 @@ class Listing(db.Model):
             'owner_id': self.owner_id,
             'name': self.name,
             'description': self.description,
+            'capacity': self.capacity,
+            'bedrooms': self.bedrooms,
+            'beds': self.beds,
+            'baths': self.baths,
             'address': self.address,
             'city': self.city,
             'country': self.country,

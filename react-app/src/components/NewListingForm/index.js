@@ -10,6 +10,10 @@ function NewListingForm() {
 
     const [listingName, setListingName] = useState('')
     const [description, setDescription] = useState('')
+    const [capacity, setCapacity] = useState('')
+    const [bedrooms, setBedrooms] = useState('')
+    const [beds, setBeds] = useState('')
+    const [baths, setBaths] = useState('')
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
@@ -22,6 +26,10 @@ function NewListingForm() {
         await dispatch(addNewListing(
             listingName,
             description,
+            capacity,
+            bedrooms,
+            beds,
+            baths,
             address,
             city,
             country,
@@ -48,6 +56,7 @@ function NewListingForm() {
                     onSubmit={async(e) => {
                         e.preventDefault()
                         if (listingName && description &&
+                            capacity && bedrooms && beds && baths &&
                             address && city && country &&
                             latitude && longitude &&
                             price && imageUrl) {
@@ -55,6 +64,10 @@ function NewListingForm() {
                             await createListing()
                             setListingName('')
                             setDescription('')
+                            setCapacity('')
+                            setBedrooms('')
+                            setBeds('')
+                            setBaths('')
                             setAddress('')
                             setCity('')
                             setCountry('')
@@ -82,6 +95,42 @@ function NewListingForm() {
                             value={description}
                             onChange={e => {
                                 setDescription(e.target.value)
+                            }}
+                            required
+                        ></input>
+                        <label>Capacity</label>
+                        <input
+                            placeholder='Capacity'
+                            value={capacity}
+                            onChange={e => {
+                                setCapacity(e.target.value)
+                            }}
+                            required
+                        ></input>
+                        <label>Bedrooms</label>
+                        <input
+                            placeholder='Bedrooms'
+                            value={bedrooms}
+                            onChange={e => {
+                                setBedrooms(e.target.value)
+                            }}
+                            required
+                        ></input>
+                        <label>Beds</label>
+                        <input
+                            placeholder='Beds'
+                            value={beds}
+                            onChange={e => {
+                                setBeds(e.target.value)
+                            }}
+                            required
+                        ></input>
+                        <label>Baths</label>
+                        <input
+                            placeholder='Baths'
+                            value={baths}
+                            onChange={e => {
+                                setBaths(e.target.value)
                             }}
                             required
                         ></input>
@@ -156,6 +205,10 @@ function NewListingForm() {
                                 dispatch(addListingOff())
                                 setListingName('')
                                 setDescription('')
+                                setCapacity('')
+                                setBedrooms('')
+                                setBeds('')
+                                setBaths('')
                                 setAddress('')
                                 setCity('')
                                 setCountry('')
@@ -170,6 +223,7 @@ function NewListingForm() {
                         <button
                             className='submit'
                             disabled={!listingName || !description ||
+                                !capacity || !bedrooms || !beds || !baths ||
                                 !address || !city || !country ||
                                 !latitude || !longitude ||
                                 !price || !imageUrl}
