@@ -117,6 +117,11 @@
   cursor: pointer;
 }
 
+.listingButton .submit:disabled {
+  cursor: auto;
+  color: rgb(122, 122, 121);
+}
+
 .form1 {
     width: 92%;
     padding: 15px;

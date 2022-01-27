@@ -22,9 +22,10 @@ function NewListingForm() {
     const [longitude, setLongitude] = useState('')
     const [price, setPrice] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    const [errors, setErrors] = useState([])
 
     const createListing = async e => {
-        await dispatch(addNewListing(
+        const data = await dispatch(addNewListing(
             listingName,
             description,
             capacity,
@@ -39,6 +40,10 @@ function NewListingForm() {
             price,
             imageUrl
         ))
+        if (data) {
+            console.log('data', data)
+            setErrors(data)
+        }
     }
 
     return (

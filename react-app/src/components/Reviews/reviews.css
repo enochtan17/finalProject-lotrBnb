@@ -125,3 +125,7 @@
     cursor: pointer;
 }
 
+.submit-review:disabled {
+    cursor: auto;
+    color: rgb(122, 122, 121);
+}
