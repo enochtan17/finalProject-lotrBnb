@@ -21,7 +21,7 @@ function Listings() {
         <>
             <h2 className='bilbo-quote'>It's a dangerous business, {userState.username}, going out of your door. You step into the Road, and if you don't keep your feet, <br/> there is no telling where you might be swept off to.</h2>
             <hr className='listings-hr'></hr>
-            <h3>Listings</h3>
+            <h2 className='listing-header'>Listings</h2>
             <NewListingButton />
             <NewListingForm />
             <div className='listing-container'>
@@ -47,10 +47,10 @@ function Listings() {
                                     <h3>{listing?.name}</h3>
                                     <hr className='hr-under' ></hr>
                                     <div className='listing-deets'>
-                                        <p>{listing?.capacity} guests</p>
-                                        <p>{listing?.bedrooms} bedrooms</p>
-                                        <p>{listing?.beds} beds</p>
-                                        <p>{listing?.baths} baths</p>
+                                        <span>{listing?.capacity} guests • </span>
+                                        <span>{listing?.bedrooms} bedrooms • </span>
+                                        <span>{listing?.beds} beds • </span>
+                                        <span>{listing?.baths} baths</span>
                                     </div>
                                     <hr className='hr-under' ></hr>
                                     <p>${listing?.price} / night</p>

@@ -9,17 +9,22 @@
     margin: 0px 15px;
 }
 
+.listing-header {
+    margin-bottom: 0px;
+    padding: 0px 50px;
+    font-family: fantasy;
+    font-weight: bolder;
+    color: rgb(69, 69, 69);
+}
+
 .listing-container {
     width: 700px;
     padding: 0px 24px;
+    margin-bottom: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-
-/* .each-listing-box {
-    height: 250px;
-} */
 
 .listing-data {
     display: flex;

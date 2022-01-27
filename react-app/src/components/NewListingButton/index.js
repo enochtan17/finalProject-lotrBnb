@@ -6,14 +6,14 @@ function NewListingButton() {
     const dispatch = useDispatch()
 
     return (
-        <div className='addListing'>
+        <div className='add-listing'>
             <button
                 onClick={e => {
                     e.stopPropagation()
                     dispatch(addListingOn())
                 }}
             >
-                <div className="is"><i className="fas fa-plus"></i></div>
+                <i className="fas fa-plus"></i> Host your home!
             </button>
         </div>
     )

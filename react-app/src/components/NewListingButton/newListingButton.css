@@ -1,0 +1,15 @@
+.add-listing {
+    padding: 5px 50px;
+}
+
+.add-listing button {
+    font-family: fantasy;
+    color: rgb(34, 70, 34);
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
+.add-listing button:hover {
+    cursor: pointer;
+    background-color: rgb(122, 122, 121);
+}
