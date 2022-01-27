@@ -18,6 +18,7 @@ function Reviews() {
     const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
     const [reviewId, setReviewId] = useState('')
+    const errors = []
 
     useEffect(() => {
         dispatch(getReviews(id))
@@ -51,8 +52,15 @@ function Reviews() {
         e.preventDefault()
         e.stopPropagation()
         dispatch(editReviewOn())
-        console.log('id', e.target)
         setReviewId(e.target.id)
+    }
+
+    const checkErrors = (rating, comment) => {
+        const ratingInt = parseInt(rating)
+        if (!Number.isInteger(ratingInt)) errors.push('Rating is invalid integer.')
+        else if (ratingInt < 1 || ratingInt > 5) errors.push('Rating is invalid integer.')
+        console.log('inside check errors')
+        return
     }
 
     return (
@@ -115,7 +123,10 @@ function Reviews() {
                         className='reviews-form'
                         onSubmit={async(e) => {
                             e.preventDefault()
-                            if (rating && comment) {
+                            checkErrors(rating, comment)
+                            console.log('post check, errors array', errors)
+                            if (rating && comment && !errors.length) {
+                                console.log('inside if')
                                 await newReview()
                                 setRating('')
                                 setComment('')
@@ -145,6 +156,12 @@ function Reviews() {
                         </button>
                     </form>
                 </div>
+            </div>
+            <div className='div-errors'>
+                {errors.forEach((error, idx) => {
+                    return <p className='error' key={idx}>{error}</p>
+                }
+                )}
             </div>
         </>
     )

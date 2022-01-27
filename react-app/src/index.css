@@ -141,3 +141,10 @@ nav {
 .label-input input:hover {
     box-shadow: 5px 5px 5px rgb(69, 69, 69);
 }
+
+.error {
+    font-family: fantasy;
+    font-weight: bolder;
+    text-align: center;
+    color: rgb(139, 19, 19);
+}

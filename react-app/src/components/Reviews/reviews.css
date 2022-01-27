@@ -120,3 +120,8 @@
     font-family: fantasy;
     font-weight: bolder;
 }
+
+.submit-review:hover {
+    cursor: pointer;
+}
+

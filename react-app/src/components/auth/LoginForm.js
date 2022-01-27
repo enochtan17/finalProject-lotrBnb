@@ -56,7 +56,7 @@ const LoginForm = () => {
       <form onSubmit={onLogin} className='auth-form'>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind} className='error'>{error}</div>
           ))}
         </div>
         <Link to="/sign-up" className='carousel'>Don't have an account?</Link>

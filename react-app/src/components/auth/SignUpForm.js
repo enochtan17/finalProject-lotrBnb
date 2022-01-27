@@ -45,6 +45,7 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password))
       if (data) {
+        console.log('data', data)
         setErrors(data)
       }
     }
@@ -76,7 +77,7 @@ const SignUpForm = () => {
       <form onSubmit={onSignUp} className='auth-form'>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind} className='error'>{error}</div>
           ))}
         </div>
         <Link to="/login" className='carousel'>Already have an account?</Link>
