@@ -109,6 +109,7 @@ function Reviews() {
                     )}
                 )}
                 </div>
+                <h3 className='add-review-h3'>Add a Review</h3>
                 <div className='comment-form-box'>
                     <form
                         className='reviews-form'
@@ -121,7 +122,6 @@ function Reviews() {
                             }
                         }}
                     >
-                        <h3>Add a Review</h3>
                         <label>Rating</label>
                         <input
                             placeholder='Rating'
