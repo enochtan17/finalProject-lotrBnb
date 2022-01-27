@@ -32,10 +32,10 @@ function EditListingForm() {
     }
 
     return (
-        <>
+        <div className='modal-div'>
             { showForm && (
                 <form
-                    className='listingForm'
+                    className='listingForm editform'
                     onSubmit={async(e) => {
                         e.preventDefault()
                         if (listingName && description) {
@@ -67,10 +67,12 @@ function EditListingForm() {
                             required
                         ></input>
                     </div>
-                    <div className='listingButton'>
+                    <div className='deleet-container'>
                         <div className='delete' id={ id } onClick={handleDelete}>
                             Delete <i className='fas fa-trash-alt'></i>
                         </div>
+                    </div>
+                    <div className='listingButton'>
                         <p
                             className='cancel'
                             onClick={e => {
@@ -89,7 +91,7 @@ function EditListingForm() {
                     </div>
                 </form>
             )}
-        </>
+        </div>
     )
 }
 

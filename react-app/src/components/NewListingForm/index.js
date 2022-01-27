@@ -7,6 +7,7 @@ import './newListingForm.css'
 function NewListingForm() {
     const dispatch = useDispatch()
     const showForm = useSelector(state => state.addListingFormReducer)
+    const classes = 'listingForm addform fade'
 
     const [listingName, setListingName] = useState('')
     const [description, setDescription] = useState('')
@@ -17,9 +18,9 @@ function NewListingForm() {
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
-    const [latitude, setLatitude] = useState(null)
-    const [longitude, setLongitude] = useState(null)
-    const [price, setPrice] = useState(null)
+    const [latitude, setLatitude] = useState('')
+    const [longitude, setLongitude] = useState('')
+    const [price, setPrice] = useState('')
     const [imageUrl, setImageUrl] = useState('')
 
     const createListing = async e => {
@@ -41,10 +42,10 @@ function NewListingForm() {
     }
 
     return (
-        <>
+        <div className='modal-div'>
             { showForm && (
                 <form
-                    className='listingForm'
+                    className={classes}
                     onSubmit={async(e) => {
                         e.preventDefault()
                         if (listingName && description &&
@@ -204,9 +205,9 @@ function NewListingForm() {
                                 setAddress('')
                                 setCity('')
                                 setCountry('')
-                                setLatitude(0)
-                                setLongitude(0)
-                                setPrice(0)
+                                setLatitude('')
+                                setLongitude('')
+                                setPrice('')
                                 setImageUrl('')
                             }}
                         >
@@ -225,7 +226,7 @@ function NewListingForm() {
                     </div>
                 </form>
             )}
-        </>
+        </div>
     )
 }
 

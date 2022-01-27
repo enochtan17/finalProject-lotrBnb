@@ -1,0 +1,16 @@
+.editform {
+    height: 350px;
+}
+
+.deleet-container {
+    font-family: fantasy;
+    font-weight: bolder;
+    color: whitesmoke;
+    text-align: center;
+    margin-right: 310px;
+    font-size: 13px;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
