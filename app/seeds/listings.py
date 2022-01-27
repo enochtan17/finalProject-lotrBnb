@@ -11,7 +11,7 @@ def seed_listings():
         latitude = -41.06,
         longitude = 175.19,
         price = 120,
-        image_url = 'https://static.wikia.nocookie.net/lotr/images/5/53/Rivendell_-_The_Hobbit.PNG'
+        image_url = 'https://wallpapercave.com/wp/wp1947157.jpg'
     )
 
     # demo_listing2 = Listing(
