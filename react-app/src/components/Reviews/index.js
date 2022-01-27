@@ -5,6 +5,7 @@ import { getReviews, addReview } from '../../store/reviews'
 import { editReviewOn } from '../../store/showEditReviewForm'
 import { retrieveUsers } from '../../store/users'
 import EditReviewForm from '../EditReviewForm'
+import earendil from '../../zzimages/earendil/favicon.ico'
 import './reviews.css'
 
 function Reviews() {
@@ -70,27 +71,40 @@ function Reviews() {
                             className='review-data'
                             id={review.id}
                         >
-                            <p
-                                className='review-owner'
-                            >{getUsername(review.guest_id)}</p>
-                            <p
-                                className='review-rating'
-                            >{review.rating}</p>
+                            <div className='each-review-head'>
+                                <p
+                                    className='review-owner'
+                                >
+                                    {getUsername(review.guest_id)}
+                                </p>
+                                <div className='rating-div'>
+                                    <p
+                                        className='review-rating'
+                                    >{review.rating}</p>
+                                    <img
+                                        src={earendil}
+                                        alt=''
+                                        className='earendil'
+                                    ></img>
+                                </div>
+                            </div>
                             <p
                                 className='review-content'
-                            >{review.comment}</p>
-                            { reviewOwner(review.guest_id) && (
+                            >
+                                {review.comment}
+                            </p>
+                            { reviewOwner(review.guest_id) ? (
                                 <button
                                     id={review.id}
                                     className='edit-review-button'
                                     onClick={editReview}
                                 >
-                                <i
-                                    className='fas fa-edit'
-                                    id={review.id}
-                                ></i>
-                            </button>
-                            )}
+                                    <i
+                                        className='fas fa-edit'
+                                        id={review.id}
+                                    ></i>
+                                </button>
+                            ) : <div></div>}
                         </div>
                     )}
                 )}
