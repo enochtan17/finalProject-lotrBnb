@@ -11,10 +11,12 @@ With the loss / corruption of the Palantirs, residents of Middle Earth can now u
 2. Install dependencies
 
       - ```cd app && 
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt```
+      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+      ```
       
       - ```cd react-app &&
-      npm install```
+      npm install
+      ```
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
