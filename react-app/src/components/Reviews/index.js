@@ -42,7 +42,7 @@ function Reviews() {
     }
 
     const reviewOwner = (guestId) => {
-        return loggedUser.id === guestId
+        return loggedUser?.id === guestId
     }
 
     const editReview = async e => {
