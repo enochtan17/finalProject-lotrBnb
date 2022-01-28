@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addListingOff } from '../../store/showAddListingForm'
 import { addNewListing } from '../../store/listings'
@@ -55,6 +55,36 @@ function NewListingForm() {
     const [priceError, setPriceError] = useState('')
     const [imageUrlError, setImageUrlError] = useState('')
 
+    useEffect(() => {
+        setListingName('')
+        setDescription('')
+        setCapacity('')
+        setBedrooms('')
+        setBeds('')
+        setBaths('')
+        setAddress('')
+        setCity('')
+        setCountry('')
+        setLatitude('')
+        setLongitude('')
+        setPrice('')
+        setImageUrl('')
+
+        setNameError('')
+        setDescriptionError('')
+        setCapacityError('')
+        setBedroomError('')
+        setBedError('')
+        setBathError('')
+        setAddressError('')
+        setCityError('')
+        setCountryError('')
+        setLatitudeError('')
+        setLongitudeError('')
+        setPriceError('')
+        setImageUrlError('')
+    }, [showForm])
+
     const initNameError = () => {
         setNameError('Name required')
     }
@@ -94,6 +124,10 @@ function NewListingForm() {
     const initImageUrlError = () => {
         setImageUrlError('Image URL required')
     }
+    const isInt = (val) => {
+        console.log(!isNaN(val), val !== '')
+        return (!isNaN(val) && val !== '')
+    }
 
     return (
         <div className='modal-div'>
@@ -130,6 +164,11 @@ function NewListingForm() {
                             onClick={initNameError}
                             onChange={e => {
                                 setListingName(e.target.value)
+                                if (e.target.value) {
+                                    setNameError('')
+                                } else {
+                                    initNameError()
+                                }
                             }}
                             required
                         ></input>
@@ -141,6 +180,11 @@ function NewListingForm() {
                             onClick={initDescriptionError}
                             onChange={e => {
                                 setDescription(e.target.value)
+                                if (e.target.value) {
+                                    setDescriptionError('')
+                                } else {
+                                    initDescriptionError()
+                                }
                             }}
                             required
                         ></input>
@@ -152,6 +196,11 @@ function NewListingForm() {
                             onClick={initCapacityError}
                             onChange={e => {
                                 setCapacity(e.target.value)
+                                if (isInt(e.target.value)) {
+                                    setCapacityError('')
+                                } else {
+                                    initCapacityError()
+                                }
                             }}
                             required
                         ></input>
@@ -163,6 +212,11 @@ function NewListingForm() {
                             onClick={initBedroomError}
                             onChange={e => {
                                 setBedrooms(e.target.value)
+                                if (isInt(e.target.value)) {
+                                    setBedroomError('')
+                                } else {
+                                    initBedroomError()
+                                }
                             }}
                             required
                         ></input>
@@ -174,6 +228,11 @@ function NewListingForm() {
                             onClick={initBedError}
                             onChange={e => {
                                 setBeds(e.target.value)
+                                if (isInt(e.target.value)) {
+                                    setBedError('')
+                                } else {
+                                    initBedError()
+                                }
                             }}
                             required
                         ></input>
@@ -185,6 +244,11 @@ function NewListingForm() {
                             onClick={initBathError}
                             onChange={e => {
                                 setBaths(e.target.value)
+                                if (isInt(e.target.value)) {
+                                    setBathError('')
+                                } else {
+                                    initBathError()
+                                }
                             }}
                             required
                         ></input>
@@ -196,6 +260,11 @@ function NewListingForm() {
                             onClick={initAddressError}
                             onChange={e => {
                                 setAddress(e.target.value)
+                                if (e.target.value) {
+                                    setAddressError('')
+                                } else {
+                                    initAddressError()
+                                }
                             }}
                             required
                         ></input>
@@ -207,6 +276,11 @@ function NewListingForm() {
                             onClick={initCityError}
                             onChange={e => {
                                 setCity(e.target.value)
+                                if (e.target.value) {
+                                    setCityError('')
+                                } else {
+                                    initCityError()
+                                }
                             }}
                             required
                         ></input>
@@ -218,6 +292,11 @@ function NewListingForm() {
                             onClick={initCountryError}
                             onChange={e => {
                                 setCountry(e.target.value)
+                                if (e.target.value) {
+                                    setCountryError('')
+                                } else {
+                                    initCountryError()
+                                }
                             }}
                             required
                         ></input>
@@ -229,6 +308,11 @@ function NewListingForm() {
                             onClick={initLatitudeError}
                             onChange={e => {
                                 setLatitude(e.target.value)
+                                if (isInt(e.target.value)) {
+                                    setLatitudeError('')
+                                } else {
+                                    initLatitudeError()
+                                }
                             }}
                             required
                         ></input>
@@ -240,6 +324,11 @@ function NewListingForm() {
                             onClick={initLongitudeError}
                             onChange={e => {
                                 setLongitude(e.target.value)
+                                if (isInt(e.target.value)) {
+                                    setLongitudeError('')
+                                } else {
+                                    initLongitudeError()
+                                }
                             }}
                             required
                         ></input>
@@ -251,6 +340,11 @@ function NewListingForm() {
                             onClick={initPriceError}
                             onChange={e => {
                                 setPrice(e.target.value)
+                                if (isInt(e.target.value)) {
+                                    setPriceError('')
+                                } else {
+                                    initPriceError()
+                                }
                             }}
                             required
                         ></input>
@@ -262,6 +356,11 @@ function NewListingForm() {
                             onClick={initImageUrlError}
                             onChange={e => {
                                 setImageUrl(e.target.value)
+                                if (e.target.value) {
+                                    setImageUrlError('')
+                                } else {
+                                    initImageUrlError()
+                                }
                             }}
                             required
                         ></input>
