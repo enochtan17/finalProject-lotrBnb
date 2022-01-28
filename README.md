@@ -2,7 +2,7 @@
 
 Website: https://lotrbnb-etan.herokuapp.com/
 
-With the loss / corruption of the Palantirs, residents of Middle Earth can now use this safe and secure app instead to see where they can vacation to, or catch brief respite from their weary travels. From the Blue Mountains to Haradwaith, from supper to second breakfast - we've got you covered!
+A spin on Airbnb for the people of Middle Earth. Users can browse, create, edit, and delete listings, as well as reviews.
 
 ## Technologies Used
 
@@ -25,21 +25,21 @@ With the loss / corruption of the Palantirs, residents of Middle Earth can now u
 
 ## Getting started
 
-1. Clone this repository 
+1. Clone this repository
 
 2. Install dependencies
 
-   -   ```cd app && 
+   -   ```cd app &&
        pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
        ```
-      
+
    -   ```cd react-app &&
        npm install
        ```
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
-   
+
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
 5. Get into your pipenv, migrate your database, seed your database, and run your flask app

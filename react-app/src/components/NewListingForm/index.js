@@ -125,7 +125,6 @@ function NewListingForm() {
         setImageUrlError('Image URL required')
     }
     const isInt = (val) => {
-        console.log(!isNaN(val), val !== '')
         return (!isNaN(val) && val !== '')
     }
 

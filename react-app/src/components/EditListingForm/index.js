@@ -11,7 +11,10 @@ function EditListingForm() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const showForm = useSelector(state => state.editListingFormReducer)
+    const listingObj = useSelector(state => state.singleListingReducer)
     const { id } = useParams()
+
+    console.log('listingObj', listingObj?.description)
 
     const [listingName, setListingName] = useState('')
     const [description, setDescription] = useState('')
