@@ -186,6 +186,7 @@ nav {
 }
 
 .error-box {
-    background-color: whitesmoke; opacity: 49%;
+    background-color: whitesmoke;
+    opacity: 49%;
     border-radius: 10px;
 }
