@@ -24,9 +24,10 @@
 .inspiration-header h1 {
     padding-top: 64px;
     padding-bottom: 10px;
-    margin: 0px 48px;
     font-family: fantasy;
     color: rgb(69, 69, 69);
+    position: relative;
+    left: 7.5%;
 }
 
 .inspiration-boxes {
@@ -125,4 +126,10 @@
 
 .copyright img {
     margin-right: 3px;
+}
+
+.inspire-box1:hover, .inspire-box2:hover, .inspire-box3:hover, .inspire-box4:hover {
+    cursor: pointer;
+    border: 1px inset rgb(69, 69, 69);
+    box-shadow: 10px 10px 10px rgb(69, 69, 69);
 }

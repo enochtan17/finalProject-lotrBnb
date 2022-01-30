@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import gitLogo from '../../zzimages/git.png'
 import linkedIn from '../../zzimages/linkedInLogo.webp'
 import lonelyMtn from '../../zzimages/lonely-mtn.jpeg'
@@ -8,6 +9,11 @@ import blueMtn from '../../zzimages/blue-mtn.jpeg'
 import './outsideHome.css'
 
 const OutsideHome = () => {
+    const hist = useNavigate()
+
+    const redirect = () => {
+        hist('/login')
+    }
 
     return (
         <>
@@ -18,22 +24,34 @@ const OutsideHome = () => {
                 <h1>Inspiration for your next trip</h1>
             </div>
             <div className='inspiration-boxes'>
-                <div className='inspire-box1'>
+                <div
+                    className='inspire-box1'
+                    onClick={redirect}
+                >
                     <img src={lonelyMtn} alt=''></img>
                     <h3>The Lonely Mountain</h3>
                     <p>397 miles away</p>
                 </div>
-                <div className='inspire-box2'>
+                <div
+                    className='inspire-box2'
+                    onClick={redirect}
+                >
                     <img src={haradwaith} alt=''></img>
                     <h3>Haradwaith</h3>
                     <p>968 miles away</p>
                 </div>
-                <div className='inspire-box3'>
+                <div
+                    className='inspire-box3'
+                    onClick={redirect}
+                >
                     <img src={anfalas} alt=''></img>
                     <h3>Anfalas</h3>
                     <p>247 miles away</p>
                 </div>
-                <div className='inspire-box4'>
+                <div
+                    className='inspire-box4'
+                    onClick={redirect}
+                >
                     <img src={blueMtn} alt=''></img>
                     <h3>Blue Mountains</h3>
                     <p>45 miles away</p>
