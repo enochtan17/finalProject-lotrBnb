@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
+import { getListing } from '../../store/singlelisting'
 import { editListingOff } from '../../store/showEditListingForm'
 import { editListingThunk } from '../../store/singlelisting'
 import { removeListing } from '../../store/listings'
@@ -11,7 +12,7 @@ function EditListingForm() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const showForm = useSelector(state => state.editListingFormReducer)
-    // const listingObj = useSelector(state => state.singleListingReducer)
+    const listing = useSelector(state => state.singleListingReducer)
     const { id } = useParams()
 
     const [listingName, setListingName] = useState('')
@@ -21,19 +22,18 @@ function EditListingForm() {
     const [descriptionError, setDescriptionError] = useState('')
 
     useEffect(() => {
-        setListingName('')
-        setDescription('')
+        dispatch(getListing(id))
+    }, [dispatch, id])
 
+    useEffect(() => {
+        setListingName(`${listing.name}`)
+        setDescription(`${listing.description}`)
+    }, [listing, showForm])
+
+    useEffect(() => {
         setNameError('')
         setDescriptionError('')
     }, [showForm])
-
-    const initNameError = () => {
-        setNameError('Name required')
-    }
-    const initDescriptionError = () => {
-        setDescriptionError('Description required')
-    }
 
     const editListing = async e => {
         await dispatch(editListingThunk(
@@ -41,6 +41,8 @@ function EditListingForm() {
             listingName,
             description
         ))
+        setListingName(listingName)
+        setDescription(description)
     }
 
     const handleDelete = async e => {
@@ -59,8 +61,6 @@ function EditListingForm() {
                         e.preventDefault()
                         await editListing()
                         dispatch(editListingOff())
-                        setListingName('')
-                        setDescription('')
                     }}
                 >
                     <div className='form1'>
@@ -69,13 +69,12 @@ function EditListingForm() {
                         <input
                             placeholder='Listing Name'
                             value={listingName}
-                            onClick={initNameError}
                             onChange={e => {
                                 setListingName(e.target.value)
                                 if (e.target.value) {
                                     setNameError('')
                                 } else {
-                                    initNameError()
+                                    setNameError('Name required')
                                 }
                             }}
                             required
@@ -85,13 +84,12 @@ function EditListingForm() {
                         <input
                             placeholder='Description'
                             value={description}
-                            onClick={initDescriptionError}
                             onChange={e => {
                                 setDescription(e.target.value)
                                 if (e.target.value) {
                                     setDescriptionError('')
                                 } else {
-                                    initDescriptionError()
+                                    setDescriptionError('Description required')
                                 }
                             }}
                             required

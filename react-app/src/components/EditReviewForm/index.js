@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { removeReview, updateReview } from '../../store/reviews'
+import { getReviews, removeReview, updateReview } from '../../store/reviews'
 import { editReviewOff } from '../../store/showEditReviewForm'
 import './editReviewForm.css'
 import '../NewListingForm/newListingForm.css'
 
 function EditReviewForm({ reviewId }) {
     const dispatch = useDispatch()
+    // const reviews = useSelector(state => state.reviewReducer)
     const showForm = useSelector(state => state.editReviewFormReducer)
 
     const [rating, setRating] = useState('')
@@ -15,27 +16,35 @@ function EditReviewForm({ reviewId }) {
     const [ratingError, setRatingError] = useState('')
     const [commentError, setCommentError] = useState('')
 
-    useEffect(() => {
-        setRating('')
-        setComment('')
+    // useEffect(async() => {
+    //     async function fetchData() {
+    //         // You can await here
+    //         // const response = await MyAPI.getData(someId);
+    //         // ...
+    //         if (showForm) {
+    //             const res = await dispatch(getReviews(reviewId))
+    //         }
+    //     }
+    //     fetchData()
+    // }, [dispatch, reviewId])
 
+    // useEffect(() => {
+
+    // }, [reviews, showForm])
+
+    useEffect(() => {
         setRatingError('')
         setCommentError('')
     }, [showForm])
 
-    const initRatingError = () => {
-        setRatingError('Rating required')
-    }
-    const initCommentError = () => {
-        setCommentError('Comment required')
-    }
-
     const editReview = async e => {
-        await dispatch(updateReview(
+        dispatch(updateReview(
             reviewId,
             rating,
             comment
         ))
+        // setRating(rating)
+        // setComment(comment)
     }
 
     const handleDelete = async e => {
@@ -54,8 +63,6 @@ function EditReviewForm({ reviewId }) {
                         if (rating && comment) {
                             dispatch(editReviewOff())
                             await editReview()
-                            setRating('')
-                            setComment('')
                         }
                     }}
                 >
@@ -65,13 +72,12 @@ function EditReviewForm({ reviewId }) {
                         <input
                             placeholder='Rating'
                             value={rating}
-                            onClick={initRatingError}
                             onChange={e => {
                                 setRating(e.target.value)
                                 if (e.target.value) {
                                     setRatingError('')
                                 } else {
-                                    initRatingError()
+                                    setRatingError('Rating required')
                                 }
                             }}
                             required
@@ -81,13 +87,12 @@ function EditReviewForm({ reviewId }) {
                         <input
                             placeholder='Comment'
                             value={comment}
-                            onClick={initCommentError}
                             onChange={e => {
                                 setComment(e.target.value)
                                 if (e.target.value) {
                                     setCommentError('')
                                 } else {
-                                    initCommentError()
+                                    setCommentError('Comment required')
                                 }
                             }}
                             required
