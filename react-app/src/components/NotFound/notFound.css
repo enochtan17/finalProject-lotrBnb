@@ -1,0 +1,36 @@
+.not-found-container {
+    background: url('../../zzimages/emynmuil.png');
+    background-size: cover;
+    background-position: inherit;
+    image-rendering: -webkit-optimize-contrast, pixelated;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: fantasy;
+}
+
+.not-found-container h1 {
+    margin: 0px;
+    position: relative;
+    top: 60%;
+    left: 10%;
+    color: whitesmoke;
+}
+
+.not-found-container a {
+    margin: 3px;
+    padding: 2px;
+    text-decoration: none;
+    color: whitesmoke;
+    border: 1px whitesmoke solid;
+    border-radius: 10px;
+}
+
+.not-found-container a:hover {
+    color: rgb(69, 69, 69);
+    background-color: whitesmoke;
+    border: none;
+}
