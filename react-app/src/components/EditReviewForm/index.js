@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { getReviews, removeReview, updateReview } from '../../store/reviews'
 import { editReviewOff } from '../../store/showEditReviewForm'
 import './editReviewForm.css'
@@ -7,8 +8,9 @@ import '../NewListingForm/newListingForm.css'
 
 function EditReviewForm({ reviewId }) {
     const dispatch = useDispatch()
-    // const reviews = useSelector(state => state.reviewReducer)
+    const reviews = useSelector(state => state.reviewReducer)
     const showForm = useSelector(state => state.editReviewFormReducer)
+    const { id } = useParams()
 
     const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
@@ -16,21 +18,20 @@ function EditReviewForm({ reviewId }) {
     const [ratingError, setRatingError] = useState('')
     const [commentError, setCommentError] = useState('')
 
-    // useEffect(async() => {
-    //     async function fetchData() {
-    //         // You can await here
-    //         // const response = await MyAPI.getData(someId);
-    //         // ...
-    //         if (showForm) {
-    //             const res = await dispatch(getReviews(reviewId))
-    //         }
-    //     }
-    //     fetchData()
-    // }, [dispatch, reviewId])
+    useEffect(() => {
+        dispatch(getReviews(id))
+    }, [dispatch, id])
 
-    // useEffect(() => {
-
-    // }, [reviews, showForm])
+    useEffect(() => {
+        let singleReview
+        for (let i = 0; i < reviews.length; i++) {
+            if (reviews[i].id === parseInt(reviewId)) {
+                singleReview = reviews[i]
+            }
+        }
+        setRating(singleReview?.rating)
+        setComment(singleReview?.comment)
+    }, [showForm])
 
     useEffect(() => {
         setRatingError('')
@@ -43,8 +44,6 @@ function EditReviewForm({ reviewId }) {
             rating,
             comment
         ))
-        // setRating(rating)
-        // setComment(comment)
     }
 
     const handleDelete = async e => {
