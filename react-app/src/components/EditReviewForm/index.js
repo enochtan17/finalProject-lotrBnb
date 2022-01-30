@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeReview, updateReview } from '../../store/reviews'
 import { editReviewOff } from '../../store/showEditReviewForm'
@@ -8,8 +8,27 @@ import '../NewListingForm/newListingForm.css'
 function EditReviewForm({ reviewId }) {
     const dispatch = useDispatch()
     const showForm = useSelector(state => state.editReviewFormReducer)
+
     const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
+
+    const [ratingError, setRatingError] = useState('')
+    const [commentError, setCommentError] = useState('')
+
+    useEffect(() => {
+        setRating('')
+        setComment('')
+
+        setRatingError('')
+        setCommentError('')
+    }, [showForm])
+
+    const initRatingError = () => {
+        setRatingError('Rating required')
+    }
+    const initCommentError = () => {
+        setCommentError('Comment required')
+    }
 
     const editReview = async e => {
         await dispatch(updateReview(
@@ -46,20 +65,34 @@ function EditReviewForm({ reviewId }) {
                         <input
                             placeholder='Rating'
                             value={rating}
+                            onClick={initRatingError}
                             onChange={e => {
                                 setRating(e.target.value)
+                                if (e.target.value) {
+                                    setRatingError('')
+                                } else {
+                                    initRatingError()
+                                }
                             }}
                             required
                         ></input>
+                        { ratingError ? <div className='err-modal'>{ratingError}</div> : '' }
                         <label>Comment</label>
                         <input
                             placeholder='Comment'
                             value={comment}
+                            onClick={initCommentError}
                             onChange={e => {
                                 setComment(e.target.value)
+                                if (e.target.value) {
+                                    setCommentError('')
+                                } else {
+                                    initCommentError()
+                                }
                             }}
                             required
                         ></input>
+                        { commentError ? <div className='err-modal'>{commentError}</div> : '' }
                     </div>
                     <div className='deleet-container'>
                         <div className='delete'
