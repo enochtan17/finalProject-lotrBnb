@@ -19,8 +19,8 @@ function Listings() {
     }, [userState, hist])
 
     useEffect(() => {
-        if (userState) dispatch(getAllListings())
-    }, [dispatch, userState])
+        dispatch(getAllListings())
+    }, [dispatch, listings])
 
     return (
         <>

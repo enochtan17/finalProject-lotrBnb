@@ -31,6 +31,7 @@ function Reviews() {
     const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
     const [reviewId, setReviewId] = useState('')
+    const [addReviewError, setAddReviewError] = useState('')
 
     useEffect(() => {
         if (!loggedUser) return hist("/forbidden")
@@ -131,7 +132,7 @@ function Reviews() {
                         className='reviews-form'
                         onSubmit={async(e) => {
                             e.preventDefault()
-                            if (rating && comment) {
+                            if (!addReviewError) {
                                 await newReview()
                                 setRating('')
                                 setComment('')
