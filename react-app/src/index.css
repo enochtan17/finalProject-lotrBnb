@@ -148,3 +148,44 @@ nav {
     text-align: center;
     color: rgb(139, 19, 19);
 }
+
+.login-fail {
+    background: url('./zzimages/shallnotpass.png');
+    background-size: cover;
+    background-position: inherit;
+    image-rendering: -webkit-optimize-contrast, pixelated;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.fail-wb {
+    color: whitesmoke;
+}
+
+.none {
+    color: whitesmoke;
+}
+
+.gandalf {
+    color: whitesmoke;
+    font-family: fantasy;
+    font-weight: bolder;
+    font-size: 80px;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.error-fail {
+    padding: 5px;
+    font-family: fantasy;
+    font-weight: bolder;
+    text-align: center;
+    color: rgb(139, 19, 19);
+}
+
+.error-box {
+    background-color: whitesmoke; opacity: 49%;
+    border-radius: 10px;
+}
