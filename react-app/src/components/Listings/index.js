@@ -14,12 +14,16 @@ function Listings() {
     const hist = useNavigate()
 
     useEffect(() => {
-        dispatch(getAllListings())
+        if (!userState) return hist("/forbidden")
+    }, [])
+
+    useEffect(() => {
+        if (userState) dispatch(getAllListings())
     }, [dispatch])
 
     return (
         <>
-            <h2 className='bilbo-quote'>It's a dangerous business, {userState.username}, going out of your door. You step into the Road, and if you don't keep your feet, <br/> there is no telling where you might be swept off to.</h2>
+            <h2 className='bilbo-quote'>It's a dangerous business, {userState?.username}, going out of your door. You step into the Road, and if you don't keep your feet, <br/> there is no telling where you might be swept off to.</h2>
             <hr className='listings-hr'></hr>
             <h2 className='all-listings-header'>Listings</h2>
             <NewListingButton />

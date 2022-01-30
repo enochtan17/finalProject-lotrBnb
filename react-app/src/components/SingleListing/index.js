@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getListing } from '../../store/singlelisting'
 import { editListingOn } from '../../store/showEditListingForm'
+import NavBar from '../NavBar'
 import EditListingForm from '../EditListingForm'
 import Reviews from '../Reviews'
 import './singleListing.css'
@@ -18,6 +19,10 @@ function SingleListing() {
     const [isOwner, setIsOwner] = useState(false)
 
     useEffect(() => {
+        if (!user) return hist("/forbidden")
+    }, [])
+
+    useEffect(() => {
         if (user?.id === listing.owner_id) {
             setIsOwner(true)
         } else {
@@ -26,7 +31,7 @@ function SingleListing() {
     }, [listing, user?.id])
 
     useEffect(() => {
-        dispatch(getListing(id))
+        if (user) dispatch(getListing(id))
     }, [dispatch, id])
 
     const backButton = e => {
@@ -54,6 +59,7 @@ function SingleListing() {
 
     return (
         <>
+            <NavBar />
             <EditListingForm />
             <div className='listing-header'>
                 <div className="backbuttoncontainer">

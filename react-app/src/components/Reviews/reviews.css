@@ -65,6 +65,7 @@
     border-radius: 10px;
     color: rgb(34, 70, 34);
     background-color: rgb(226, 226, 226);
+    width: 50px;
 }
 
 .edit-review-button:hover {

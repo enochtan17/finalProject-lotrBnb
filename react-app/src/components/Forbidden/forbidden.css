@@ -1,0 +1,35 @@
+.forbidden-container {
+    background: url('../../zzimages/argonath.png');
+    background-size: cover;
+    background-position: inherit;
+    image-rendering: -webkit-optimize-contrast, pixelated;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: fantasy;
+}
+
+.forbidden-container h1 {
+    margin: 0px;
+    position: relative;
+    top: 75%;
+    left: 10%;
+    color: whitesmoke;
+}
+
+.forbidden-container a {
+    padding: 3px;
+    text-decoration: none;
+    color: whitesmoke;
+    border: 1px whitesmoke solid;
+    border-radius: 10px;
+}
+
+.forbidden-container a:hover {
+    color: rgb(69, 69, 69);
+    background-color: whitesmoke;
+    border: none;
+}

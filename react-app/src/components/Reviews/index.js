@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { getReviews, addReview } from '../../store/reviews'
 import { editReviewOn } from '../../store/showEditReviewForm'
 import { retrieveUsers } from '../../store/users'
@@ -13,6 +13,7 @@ function Reviews() {
     const users = useSelector(state => state.usersReducer.users)
     const loggedUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
+    const hist = useNavigate()
     const { id } = useParams()
 
     const [rating, setRating] = useState('')
@@ -21,11 +22,15 @@ function Reviews() {
     const errors = []
 
     useEffect(() => {
-        dispatch(getReviews(id))
+        if (!loggedUser) return hist("/forbidden")
+    }, [])
+
+    useEffect(() => {
+        if (loggedUser) dispatch(getReviews(id))
     }, [dispatch, id])
 
     useEffect(() => {
-        dispatch(retrieveUsers())
+        if (loggedUser) dispatch(retrieveUsers())
     }, [dispatch])
 
     const getUsername = guestId => {

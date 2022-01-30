@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { authenticate } from './store/session'
 import LoginForm from './components/auth/LoginForm'
 import SignUpForm from './components/auth/SignUpForm'
 import Splash from './components/Splash'
-import NavBar from './components/NavBar'
 import SingleListing from './components/SingleListing'
 import Listings from './components/Listings'
-import { authenticate } from './store/session'
+import NotFound from './components/NotFound'
+import Forbidden from './components/Forbidden'
 
 function App() {
   const [loaded, setLoaded] = useState(false)
@@ -26,13 +27,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Routes>
         <Route path='/' element={<Splash />}></Route>
         <Route path='/login' element={<LoginForm />}></Route>
         <Route path='/sign-up' element={<SignUpForm />}></Route>
         <Route path='/listings' element={<Listings />}></Route>
         <Route path='/listings/:id' element={<SingleListing />}></Route>
+        <Route path='/forbidden' element={<Forbidden />}></Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   )

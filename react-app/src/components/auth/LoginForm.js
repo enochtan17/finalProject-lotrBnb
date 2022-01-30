@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, Navigate } from 'react-router-dom'
 import { login } from '../../store/session'
+import NavBar from '../NavBar'
 import sauronIcon from '../../zzimages/sauron_icon/favicon.ico'
 import eyeSlash from '../../zzimages/eye-slash-icon/favicon.ico'
 
@@ -52,6 +53,7 @@ const LoginForm = () => {
 
   return (
     <>
+      <NavBar />
       <h1 className='auth-header'>Welcome Back!</h1>
       <form onSubmit={onLogin} className='auth-form'>
         <div>

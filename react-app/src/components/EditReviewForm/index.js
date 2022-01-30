@@ -10,6 +10,7 @@ function EditReviewForm({ reviewId }) {
     const dispatch = useDispatch()
     const reviews = useSelector(state => state.reviewReducer)
     const showForm = useSelector(state => state.editReviewFormReducer)
+    const user = useSelector(state => state.session.user)
     const { id } = useParams()
 
     const [rating, setRating] = useState('')
@@ -19,7 +20,7 @@ function EditReviewForm({ reviewId }) {
     const [commentError, setCommentError] = useState('')
 
     useEffect(() => {
-        dispatch(getReviews(id))
+        if (user) dispatch(getReviews(id))
     }, [dispatch, id])
 
     useEffect(() => {
@@ -46,10 +47,10 @@ function EditReviewForm({ reviewId }) {
         ))
     }
 
-    const handleDelete = async e => {
+    const handleDelete = e => {
         e.preventDefault()
         e.stopPropagation()
-        await dispatch(removeReview(reviewId))
+        dispatch(removeReview(reviewId))
     }
 
     return (

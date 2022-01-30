@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import NavBar from '../NavBar'
 import Listings from '../Listings'
 import NewListingForm from '../NewListingForm'
 import OutsideHome from '../OutsideHome'
@@ -10,6 +11,7 @@ const Splash = () => {
 
     return (
         <>
+            <NavBar />
             { !userState && <OutsideHome />}
             <NewListingForm />
             { userState && <Listings />}

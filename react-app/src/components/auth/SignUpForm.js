@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, Navigate } from 'react-router-dom'
 import { signUp } from '../../store/session'
+import NavBar from '../NavBar'
 import sauronIcon from '../../zzimages/sauron_icon/favicon.ico'
 import eyeSlash from '../../zzimages/eye-slash-icon/favicon.ico'
 
@@ -73,6 +74,7 @@ const SignUpForm = () => {
 
   return (
     <>
+      <NavBar />
       <h1 className='auth-header'>Register Account</h1>
       <form onSubmit={onSignUp} className='auth-form'>
         <div>
