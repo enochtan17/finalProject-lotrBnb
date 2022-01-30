@@ -36,13 +36,11 @@ function EditListingForm() {
     }, [showForm])
 
     const editListing = async e => {
-        await dispatch(editListingThunk(
+        dispatch(editListingThunk(
             id,
             listingName,
             description
         ))
-        setListingName(listingName)
-        setDescription(description)
     }
 
     const handleDelete = async e => {
@@ -106,8 +104,6 @@ function EditListingForm() {
                             className='cancel'
                             onClick={e => {
                                 dispatch(editListingOff())
-                                setListingName('')
-                                setDescription('')
                             }}
                         >
                             Cancel
