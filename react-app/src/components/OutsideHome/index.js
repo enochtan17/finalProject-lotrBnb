@@ -1,6 +1,10 @@
 import React from 'react'
 import gitLogo from '../../zzimages/git.png'
 import linkedIn from '../../zzimages/linkedInLogo.webp'
+import lonelyMtn from '../../zzimages/lonely-mtn.jpeg'
+import haradwaith from '../../zzimages/haradwaith.webp'
+import anfalas from '../../zzimages/anfalas.jpeg'
+import blueMtn from '../../zzimages/blue-mtn.jpeg'
 import './outsideHome.css'
 
 const OutsideHome = () => {
@@ -15,22 +19,22 @@ const OutsideHome = () => {
             </div>
             <div className='inspiration-boxes'>
                 <div className='inspire-box1'>
-                    <img src='https://www.thetolkienforum.com/wiki-asset/?pid=574&d=1628070498' alt=''></img>
+                    <img src={lonelyMtn} alt=''></img>
                     <h3>The Lonely Mountain</h3>
                     <p>397 miles away</p>
                 </div>
                 <div className='inspire-box2'>
-                    <img src='https://i.cbc.ca/1.4833082.1537541336!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/the-elephant-queen.jpg' alt=''></img>
+                    <img src={haradwaith} alt=''></img>
                     <h3>Haradwaith</h3>
                     <p>968 miles away</p>
                 </div>
                 <div className='inspire-box3'>
-                    <img src='https://images.ctfassets.net/gxwgulxyxxy1/8nojt8Yx1FdbzrwGzikPr/62ac4bb39dd0cd788b011fbaf9cf423b/1073528888.jpg?fm=jpg&w=1200' alt=''></img>
+                    <img src={anfalas} alt=''></img>
                     <h3>Anfalas</h3>
                     <p>247 miles away</p>
                 </div>
                 <div className='inspire-box4'>
-                    <img src='http://tolkiengateway.net/w/images/thumb/e/e8/Rob_Alexander_-_Blue_Mountain_Dwarf_Hold.jpg/250px-Rob_Alexander_-_Blue_Mountain_Dwarf_Hold.jpg' alt=''></img>
+                    <img src={blueMtn} alt=''></img>
                     <h3>Blue Mountains</h3>
                     <p>45 miles away</p>
                 </div>
