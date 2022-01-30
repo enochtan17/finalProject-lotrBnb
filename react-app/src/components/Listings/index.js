@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getAllListings } from '../../store/listings'
+import NavBar from '../NavBar'
 import NewListingButton from '../NewListingButton'
 import NewListingForm from '../NewListingForm'
 import './listings.css'
@@ -15,14 +16,15 @@ function Listings() {
 
     useEffect(() => {
         if (!userState) return hist("/forbidden")
-    }, [])
+    }, [userState, hist])
 
     useEffect(() => {
         if (userState) dispatch(getAllListings())
-    }, [dispatch])
+    }, [dispatch, userState])
 
     return (
         <>
+            <NavBar />
             <h2 className='bilbo-quote'>It's a dangerous business, {userState?.username}, going out of your door. You step into the Road, and if you don't keep your feet, <br/> there is no telling where you might be swept off to.</h2>
             <hr className='listings-hr'></hr>
             <h2 className='all-listings-header'>Listings</h2>

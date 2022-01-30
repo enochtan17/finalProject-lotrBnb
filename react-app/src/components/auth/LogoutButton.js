@@ -9,7 +9,7 @@ const LogoutButton = () => {
   const navigate = useNavigate()
 
   const onLogout = async (e) => {
-    await dispatch(logout())
+    dispatch(logout())
     navigate('/')
   }
 

@@ -6,6 +6,7 @@ import lonelyMtn from '../../zzimages/lonely-mtn.jpeg'
 import haradwaith from '../../zzimages/haradwaith.webp'
 import anfalas from '../../zzimages/anfalas.jpeg'
 import blueMtn from '../../zzimages/blue-mtn.jpeg'
+import NavBar from '../NavBar'
 import './outsideHome.css'
 
 const OutsideHome = () => {
@@ -17,6 +18,7 @@ const OutsideHome = () => {
 
     return (
         <>
+            <NavBar />
             <div className='photo-body'>
                 <h1>Not sure where to go?</h1>
             </div>

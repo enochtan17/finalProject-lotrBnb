@@ -20,7 +20,7 @@ function SingleListing() {
 
     useEffect(() => {
         if (!user) return hist("/forbidden")
-    }, [])
+    }, [user, hist])
 
     useEffect(() => {
         if (user?.id === listing.owner_id) {
@@ -32,7 +32,7 @@ function SingleListing() {
 
     useEffect(() => {
         if (user) dispatch(getListing(id))
-    }, [dispatch, id])
+    }, [dispatch, id, user])
 
     const backButton = e => {
         e.preventDefault()

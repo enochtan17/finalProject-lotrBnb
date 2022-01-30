@@ -21,7 +21,7 @@ function EditReviewForm({ reviewId }) {
 
     useEffect(() => {
         if (user) dispatch(getReviews(id))
-    }, [dispatch, id])
+    }, [dispatch, user, id])
 
     useEffect(() => {
         let singleReview
@@ -32,7 +32,7 @@ function EditReviewForm({ reviewId }) {
         }
         setRating(singleReview?.rating)
         setComment(singleReview?.comment)
-    }, [showForm])
+    }, [showForm, reviews, reviewId])
 
     useEffect(() => {
         setRatingError('')

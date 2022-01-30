@@ -8,6 +8,18 @@ import EditReviewForm from '../EditReviewForm'
 import earendil from '../../zzimages/earendil/favicon.ico'
 import './reviews.css'
 
+// index.js:1 Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components
+//     at input
+//     at div
+//     at form
+//     at div
+//     at EditReviewForm (http://localhost:3000/static/js/main.chunk.js:1050:3)
+//     at Reviews (http://localhost:3000/static/js/main.chunk.js:3965:82)
+//     at SingleListing (http://localhost:3000/static/js/main.chunk.js:4420:82)
+//     at Routes (http://localhost:3000/static/js/vendors~main.chunk.js:35535:5)
+//     at Router (http://localhost:3000/static/js/vendors~main.chunk.js:35468:15)
+//     at BrowserRouter (http://localhost:3000/static/js/vendors~main.chunk.js:34948:5)
+
 function Reviews() {
     const reviews = useSelector(state => state.reviewReducer)
     const users = useSelector(state => state.usersReducer.users)
@@ -19,19 +31,18 @@ function Reviews() {
     const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
     const [reviewId, setReviewId] = useState('')
-    const errors = []
 
     useEffect(() => {
         if (!loggedUser) return hist("/forbidden")
-    }, [])
+    }, [loggedUser, hist])
 
     useEffect(() => {
         if (loggedUser) dispatch(getReviews(id))
-    }, [dispatch, id])
+    }, [dispatch, id, loggedUser])
 
     useEffect(() => {
         if (loggedUser) dispatch(retrieveUsers())
-    }, [dispatch])
+    }, [dispatch, loggedUser])
 
     const getUsername = guestId => {
         let username
@@ -58,14 +69,6 @@ function Reviews() {
         e.stopPropagation()
         dispatch(editReviewOn())
         setReviewId(e.target.id)
-    }
-
-    const checkErrors = (rating, comment) => {
-        const ratingInt = parseInt(rating)
-        if (!Number.isInteger(ratingInt)) errors.push('Rating is invalid integer.')
-        else if (ratingInt < 1 || ratingInt > 5) errors.push('Rating is invalid integer.')
-        console.log('inside check errors')
-        return
     }
 
     return (
@@ -128,10 +131,7 @@ function Reviews() {
                         className='reviews-form'
                         onSubmit={async(e) => {
                             e.preventDefault()
-                            checkErrors(rating, comment)
-                            console.log('post check, errors array', errors)
-                            if (rating && comment && !errors.length) {
-                                console.log('inside if')
+                            if (rating && comment) {
                                 await newReview()
                                 setRating('')
                                 setComment('')
@@ -161,12 +161,6 @@ function Reviews() {
                         </button>
                     </form>
                 </div>
-            </div>
-            <div className='div-errors'>
-                {errors.forEach((error, idx) => {
-                    return <p className='error' key={idx}>{error}</p>
-                }
-                )}
             </div>
         </>
     )
