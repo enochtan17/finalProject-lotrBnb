@@ -59,7 +59,7 @@ function SingleListing() {
 
     return (
         <>
-            {/* <NavBar /> */}
+            <NavBar />
             <EditListingForm />
             <div className='listing-header'>
                 <div className="backbuttoncontainer">

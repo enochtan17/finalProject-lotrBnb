@@ -19,11 +19,15 @@ export const deleteListing = listing => ({
 
 export const getAllListings = () => async dispatch => {
     const res = await fetch(`/api/listings/`)
+                        .catch(err => {
+                            return err
+                        })
 
     if (res.ok) {
         const listings = await res.json()
         dispatch(getListings(listings.listings))
     }
+    return
 }
 
 

@@ -160,7 +160,7 @@ function NewListingForm() {
                         <input
                             placeholder='Listing Name'
                             value={listingName}
-                            onClick={initNameError}
+                            onFocus={initNameError}
                             onChange={e => {
                                 setListingName(e.target.value)
                                 if (e.target.value) {
@@ -176,7 +176,7 @@ function NewListingForm() {
                         <input
                             placeholder='Description'
                             value={description}
-                            onClick={initDescriptionError}
+                            onFocus={initDescriptionError}
                             onChange={e => {
                                 setDescription(e.target.value)
                                 if (e.target.value) {
@@ -192,7 +192,7 @@ function NewListingForm() {
                         <input
                             placeholder='Capacity'
                             value={capacity}
-                            onClick={initCapacityError}
+                            onFocus={initCapacityError}
                             onChange={e => {
                                 setCapacity(e.target.value)
                                 if (isInt(e.target.value)) {
@@ -208,7 +208,7 @@ function NewListingForm() {
                         <input
                             placeholder='Bedrooms'
                             value={bedrooms}
-                            onClick={initBedroomError}
+                            onFocus={initBedroomError}
                             onChange={e => {
                                 setBedrooms(e.target.value)
                                 if (isInt(e.target.value)) {
@@ -224,7 +224,7 @@ function NewListingForm() {
                         <input
                             placeholder='Beds'
                             value={beds}
-                            onClick={initBedError}
+                            onFocus={initBedError}
                             onChange={e => {
                                 setBeds(e.target.value)
                                 if (isInt(e.target.value)) {
@@ -240,7 +240,7 @@ function NewListingForm() {
                         <input
                             placeholder='Baths'
                             value={baths}
-                            onClick={initBathError}
+                            onFocus={initBathError}
                             onChange={e => {
                                 setBaths(e.target.value)
                                 if (isInt(e.target.value)) {
@@ -256,7 +256,7 @@ function NewListingForm() {
                         <input
                             placeholder='Address'
                             value={address}
-                            onClick={initAddressError}
+                            onFocus={initAddressError}
                             onChange={e => {
                                 setAddress(e.target.value)
                                 if (e.target.value) {
@@ -272,7 +272,7 @@ function NewListingForm() {
                         <input
                             placeholder='City'
                             value={city}
-                            onClick={initCityError}
+                            onFocus={initCityError}
                             onChange={e => {
                                 setCity(e.target.value)
                                 if (e.target.value) {
@@ -288,7 +288,7 @@ function NewListingForm() {
                         <input
                             placeholder='Country'
                             value={country}
-                            onClick={initCountryError}
+                            onFocus={initCountryError}
                             onChange={e => {
                                 setCountry(e.target.value)
                                 if (e.target.value) {
@@ -304,7 +304,7 @@ function NewListingForm() {
                         <input
                             placeholder='Latitude'
                             value={latitude}
-                            onClick={initLatitudeError}
+                            onFocus={initLatitudeError}
                             onChange={e => {
                                 setLatitude(e.target.value)
                                 if (isInt(e.target.value)) {
@@ -320,7 +320,7 @@ function NewListingForm() {
                         <input
                             placeholder='Longitude'
                             value={longitude}
-                            onClick={initLongitudeError}
+                            onFocus={initLongitudeError}
                             onChange={e => {
                                 setLongitude(e.target.value)
                                 if (isInt(e.target.value)) {
@@ -336,7 +336,7 @@ function NewListingForm() {
                         <input
                             placeholder='Price'
                             value={price}
-                            onClick={initPriceError}
+                            onFocus={initPriceError}
                             onChange={e => {
                                 setPrice(e.target.value)
                                 if (isInt(e.target.value)) {
@@ -352,7 +352,7 @@ function NewListingForm() {
                         <input
                             placeholder='Image URL'
                             value={imageUrl}
-                            onClick={initImageUrlError}
+                            onFocus={initImageUrlError}
                             onChange={e => {
                                 setImageUrl(e.target.value)
                                 if (e.target.value) {
