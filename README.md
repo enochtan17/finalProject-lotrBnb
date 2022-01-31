@@ -7,13 +7,15 @@ A spin on Airbnb for the people of Middle Earth. Users can browse, create, edit,
 ## Technologies Used
 
 - React / Redux
+- Javascript
+- CSS
 - Python
-- Flask - SQL Alchemy
+- Flask
+- SQL Alchemy
+- PostgreSQL
 - Werkzeug
 - WT Forms
 - CORS
-- Postgres
-- CSS
 - Heroku
 - Docker
 
@@ -22,6 +24,12 @@ A spin on Airbnb for the people of Middle Earth. Users can browse, create, edit,
 - [] Dynamic search bar
 - [] More user interaction with Bookings
 - [] Amenities list, ability to search / sort by amenities
+
+## Documentation
+
+* [DB Schema](https://github.com/enochtan17/finalProject-lotrBnb/wiki/DB-Schema)
+* [Feature List](https://github.com/enochtan17/finalProject-lotrBnb/wiki/Feature-List)
+* [User Stories](https://github.com/enochtan17/finalProject-lotrBnb/wiki/User-Stories)
 
 ## Getting started
 
