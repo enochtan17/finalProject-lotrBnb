@@ -36,6 +36,8 @@ def seed_users():
         username='Tom Bombadil', email='tombombadil@lotr.io', password='password')
     shelob = User(
         username='Shelob', email='shelob@lotr.io', password='password')
+    eomer = User(
+        username='Eomer', email='eomer@lotr.io', password='password')
 
 
     db.session.add(demo)
@@ -54,6 +56,7 @@ def seed_users():
     db.session.add(thranduil)
     db.session.add(tombombadil)
     db.session.add(shelob)
+    db.session.add(eomer)
 
     db.session.commit()
 
