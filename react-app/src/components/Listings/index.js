@@ -20,7 +20,7 @@ function Listings() {
 
     useEffect(() => {
         dispatch(getAllListings())
-    }, [dispatch, listings])
+    }, [dispatch])
 
     return (
         <>
