@@ -6,6 +6,7 @@ import { editListingOn } from '../../store/showEditListingForm'
 import NavBar from '../NavBar'
 import EditListingForm from '../EditListingForm'
 import Reviews from '../Reviews'
+import MapOne from '../MapOne'
 import './singleListing.css'
 
 function SingleListing() {
@@ -110,6 +111,7 @@ function SingleListing() {
                     </div>
                 )}
                 <div className='google-maps-div'>
+                    <MapOne />
                 </div>
             </div>
             <Reviews />

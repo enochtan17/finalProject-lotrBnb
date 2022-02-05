@@ -43,6 +43,7 @@
     height: 150px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    object-fit: cover;
 }
 
 .inspiration-boxes h3, .inspiration-boxes p {
