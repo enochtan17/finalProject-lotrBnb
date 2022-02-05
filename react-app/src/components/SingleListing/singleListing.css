@@ -38,6 +38,7 @@
     width: 650px;
     border-radius: 10px;
     margin-left: 25px;
+    object-fit: cover;
 }
 
 .one-listing-body {
