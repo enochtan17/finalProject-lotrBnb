@@ -43,6 +43,7 @@
 
 .one-listing-body {
     display: flex;
+    justify-content: space-between;
 }
 
 .one-listing-left {
@@ -74,4 +75,9 @@
 .hr-title-info {
     border: dotted 1px rgb(69, 69, 69);
     border-style: none none dotted;
+}
+
+.google-maps-div {
+    margin: 0px 10% 0px 0px;
+    z-index: -1;
 }
