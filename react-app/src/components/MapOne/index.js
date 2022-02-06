@@ -9,6 +9,7 @@ function MapOne() {
     const listing = useSelector(state => state.singleListingReducer)
     const dispatch = useDispatch()
     const { id } = useParams()
+    console.log(process.env)
 
     useEffect(() => {
         dispatch(getListing(id))
@@ -16,22 +17,24 @@ function MapOne() {
 
     const mapStyles = {
         height: '600px',
-        width: '600px',
-      }
+        width: '850px',
+    }
 
-      const defaultCenter = {
+    const defaultCenter = {
         lat: listing?.latitude,  lng: listing?.longitude
-      }
+    }
 
     return (
         <>
             <LoadScript
-                googleMapsApiKey={'AIzaSyCF3Sc9rl-2z2au_CoDffgHH-fuPPYiMds'}
+                googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
             >
                 <GoogleMap
                     mapContainerStyle={mapStyles}
-                    zoom={10}
+                    zoom={9}
                     center={defaultCenter}
+                    mapTypeId='hybrid'
+                    labels='true'
                 >
                 <Marker
                     position={defaultCenter}
