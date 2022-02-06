@@ -5,6 +5,7 @@ import { getAllListings } from '../../store/listings'
 import NavBar from '../NavBar'
 import NewListingButton from '../NewListingButton'
 import NewListingForm from '../NewListingForm'
+import MapAll from '../MapAll'
 import './listings.css'
 
 function Listings() {
@@ -30,43 +31,48 @@ function Listings() {
             <h2 className='all-listings-header'>Listings</h2>
             <NewListingButton />
             <NewListingForm />
-            <div className='listing-container'>
-                {listings ? listings.map(listing => {
-                    return (
-                        <div
+            <div className='main-big-box'>
+                <div className='listing-container'>
+                    {listings ? listings.map(listing => {
+                        return (
+                            <div
                             className='each-listing-box'
                             key={listing.id}
-                        >
-                            <hr></hr>
-                            <div
-                                className='listing-data'
-                                id={listing.id}
-                                onClick={() => {
-                                    hist(`/listings/${listing.id}`)
-                                }}
                             >
-                                <div className='listing-left'>
-                                    <img
-                                        src={listing.image_url}
-                                        alt='img not found'
-                                    ></img>
-                                </div>
-                                <div className='listing-right'>
-                                    <h3>{listing?.name}</h3>
-                                    <hr className='hr-under' ></hr>
-                                    <div className='listing-deets'>
-                                        <span>{listing?.capacity} guests • </span>
-                                        <span>{listing?.bedrooms} bedrooms • </span>
-                                        <span>{listing?.beds} beds • </span>
-                                        <span>{listing?.baths} baths</span>
+                                <hr></hr>
+                                <div
+                                    className='listing-data'
+                                    id={listing.id}
+                                    onClick={() => {
+                                        hist(`/listings/${listing.id}`)
+                                    }}
+                                    >
+                                    <div className='listing-left'>
+                                        <img
+                                            src={listing.image_url}
+                                            alt='img not found'
+                                            ></img>
                                     </div>
-                                    <hr className='hr-under' ></hr>
-                                    <p>${listing?.price} / night</p>
+                                    <div className='listing-right'>
+                                        <h3>{listing?.name}</h3>
+                                        <hr className='hr-under' ></hr>
+                                        <div className='listing-deets'>
+                                            <span>{listing?.capacity} guests • </span>
+                                            <span>{listing?.bedrooms} bedrooms • </span>
+                                            <span>{listing?.beds} beds • </span>
+                                            <span>{listing?.baths} baths</span>
+                                        </div>
+                                        <hr className='hr-under' ></hr>
+                                        <p>${listing?.price} / night</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                }) : null }
+                        )
+                    }) : null }
+                </div>
+                <div className='map-all'>
+                    <MapAll />
+                </div>
             </div>
         </>
     )

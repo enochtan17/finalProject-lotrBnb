@@ -9,7 +9,6 @@ function MapOne() {
     const listing = useSelector(state => state.singleListingReducer)
     const dispatch = useDispatch()
     const { id } = useParams()
-    console.log(process.env)
 
     useEffect(() => {
         dispatch(getListing(id))
@@ -20,7 +19,7 @@ function MapOne() {
         width: '850px',
     }
 
-    const defaultCenter = {
+    const listingCenter = {
         lat: listing?.latitude,  lng: listing?.longitude
     }
 
@@ -32,27 +31,13 @@ function MapOne() {
                 <GoogleMap
                     mapContainerStyle={mapStyles}
                     zoom={9}
-                    center={defaultCenter}
+                    center={listingCenter}
                     mapTypeId='hybrid'
                     labels='true'
                 >
                 <Marker
-                    position={defaultCenter}
+                    position={listingCenter}
                 />
-                {/* {selected?.coordinate && (
-                <InfoWindow
-                    position={selected.coordinate}
-                    clickable={true}
-                    onCloseClick={() => setSelected({})}
-                >
-                    <Link to={`/profiles/${name?.id}`}>
-                    <div className="marker-info">
-                        {name?.name}
-                        <img src={name?.imageUrl} alt="artist-pic" className="artist-img"/>
-                    </div>
-                    </Link>
-                </InfoWindow>
-                )} */}
                 </GoogleMap>
             </LoadScript>
         </>

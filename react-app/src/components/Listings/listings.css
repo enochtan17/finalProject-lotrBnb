@@ -17,6 +17,11 @@
     color: rgb(69, 69, 69);
 }
 
+.main-big-box {
+    display: flex;
+    justify-content: space-between;
+}
+
 .listing-container {
     width: 700px;
     padding: 0px 24px;
