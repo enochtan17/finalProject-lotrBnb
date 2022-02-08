@@ -37,7 +37,6 @@ def login():
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('inside login route')
     if form.email.data == 'demo@lotr.io':
         # Log in demo user
         user = User.query.filter(User.email == form.data['email']).first()
