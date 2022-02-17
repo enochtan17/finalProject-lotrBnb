@@ -32,7 +32,6 @@ function Reviews() {
     const [comment, setComment] = useState('')
     const [reviewId, setReviewId] = useState('')
     const [addReviewError, setAddReviewError] = useState('')
-    // setAddReviewError('')
 
     useEffect(() => {
         if (!loggedUser) return hist("/forbidden")

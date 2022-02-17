@@ -34,6 +34,7 @@
 .listing-data {
     display: flex;
     border-radius: 10px;
+    height: 200px;
 }
 
 .listing-left img {
@@ -57,4 +58,9 @@
 .listing-data:hover {
     cursor: pointer;
     box-shadow: 5px -5px 8px rgb(69, 69, 69);
+}
+
+.map-all {
+    width: 55.8%;
+    height: auto;
 }

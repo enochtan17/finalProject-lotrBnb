@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
 import { getAllListings } from '../../store/listings'
 import './mapAll.css'
 
@@ -10,13 +9,20 @@ function MapAll() {
     const listings = useSelector(state => state.listingReducer)
     // listings = array of objects
 
+    const [clickedMarkerListing, setClickedMarkerListing] = useState({})
+    // const [infoWindowOpen, setInfoWindowOpen] = useState(false)
+
+    useEffect(() => {
+        // console.log('clickMark', clickedMarkerListing)
+    }, [clickedMarkerListing])
+
     useEffect(() => {
         dispatch(getAllListings())
     }, [dispatch])
 
     const mapStyles = {
         height: '800px',
-        width: '1000px',
+        width: '100%',
     }
 
     const viewCenter = {
@@ -46,6 +52,9 @@ function MapAll() {
                         <Marker
                             key={listing.id}
                             position={setListingMarkerCoords(listing)}
+                            onClick={() => {
+                                setClickedMarkerListing(listing)
+                            }}
                         />
                     )
                 }) : null }
@@ -56,6 +65,19 @@ function MapAll() {
 }
 
 export default MapAll
+
+// { clickedMarkerListing ?
+//     <InfoWindow
+//         position={setListingMarkerCoords(clickedMarkerListing)}
+//         onCloseClick={() => setClickedMarkerListing({})}
+//     >
+//         <h1>My info window here</h1>
+//         {/* <div>
+//             {clickedMarkerListing.name}
+//             <img src={clickedMarkerListing.image_url} alt='' />
+//         </div> */}
+//     </InfoWindow> : null
+// }
 
 {/* {selected?.coordinate && (
                 <InfoWindow

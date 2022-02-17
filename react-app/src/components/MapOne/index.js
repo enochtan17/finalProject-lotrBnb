@@ -16,30 +16,33 @@ function MapOne() {
 
     const mapStyles = {
         height: '600px',
-        width: '850px',
+        width: '100%',
     }
 
-    const listingCenter = {
-        lat: listing?.latitude,  lng: listing?.longitude
+    const setListingCenter = (listing) => {
+        return ({
+            lat: parseFloat(listing?.latitude),
+            lng: parseFloat(listing?.longitude)
+        })
     }
 
     return (
         <>
-            <LoadScript
+            { listing ? ( <LoadScript
                 googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
             >
                 <GoogleMap
                     mapContainerStyle={mapStyles}
                     zoom={9}
-                    center={listingCenter}
+                    center={setListingCenter(listing)}
                     mapTypeId='hybrid'
                     labels='true'
                 >
                 <Marker
-                    position={listingCenter}
+                    position={setListingCenter(listing)}
                 />
                 </GoogleMap>
-            </LoadScript>
+            </LoadScript> ) : null }
         </>
     )
 }
