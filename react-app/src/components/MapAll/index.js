@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { getAllListings } from '../../store/listings'
 import './mapAll.css'
 
 function MapAll() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const listings = useSelector(state => state.listingReducer)
     // listings = array of objects
 
-    const [clickedMarkerListing, setClickedMarkerListing] = useState({})
-    // const [infoWindowOpen, setInfoWindowOpen] = useState(false)
+    const [markerListing, setMarkerListing] = useState({})
 
-    useEffect(() => {
-        // console.log('clickMark', clickedMarkerListing)
-    }, [clickedMarkerListing])
+    const onSelect = listing => {
+        setMarkerListing(listing)
+    }
 
     useEffect(() => {
         dispatch(getAllListings())
@@ -47,17 +48,45 @@ function MapAll() {
                     center={viewCenter}
                     labels='true'
                 >
-                { listings ? listings.map(listing => {
+                { listings?.map((listing) => {
                     return (
                         <Marker
                             key={listing.id}
                             position={setListingMarkerCoords(listing)}
-                            onClick={() => {
-                                setClickedMarkerListing(listing)
-                            }}
+                            onClick={() => onSelect(listing)}
                         />
                     )
-                }) : null }
+                })}
+                { markerListing?.latitude && (
+                    <InfoWindow
+                        position={
+                            {
+                                lat: (markerListing?.latitude + 0.3),
+                                lng: markerListing?.longitude
+                            }
+                        }
+                        clickable={true}
+                        onCloseClick={() => setMarkerListing({})}
+                    >
+                        <div className="info-window">
+                            <p
+                                className='info-name'
+                                onClick={() => {
+                                    navigate(`/listings/${markerListing.id}`)
+                                }}
+                            >
+                                {markerListing.name}
+                            </p>
+                            <img
+                                src={markerListing.image_url}
+                                alt='listing image'
+                                onClick={() => {
+                                    navigate(`/listings/${markerListing.id}`)
+                                }}
+                            />
+                        </div>
+                    </InfoWindow>
+                )}
                 </GoogleMap>
             </LoadScript>
         </div>
@@ -65,31 +94,3 @@ function MapAll() {
 }
 
 export default MapAll
-
-// { clickedMarkerListing ?
-//     <InfoWindow
-//         position={setListingMarkerCoords(clickedMarkerListing)}
-//         onCloseClick={() => setClickedMarkerListing({})}
-//     >
-//         <h1>My info window here</h1>
-//         {/* <div>
-//             {clickedMarkerListing.name}
-//             <img src={clickedMarkerListing.image_url} alt='' />
-//         </div> */}
-//     </InfoWindow> : null
-// }
-
-{/* {selected?.coordinate && (
-                <InfoWindow
-                    position={selected.coordinate}
-                    clickable={true}
-                    onCloseClick={() => setSelected({})}
-                >
-                    <Link to={`/profiles/${name?.id}`}>
-                    <div className="marker-info">
-                        {name?.name}
-                        <img src={name?.imageUrl} alt="artist-pic" className="artist-img"/>
-                    </div>
-                    </Link>
-                </InfoWindow>
-                )} */}

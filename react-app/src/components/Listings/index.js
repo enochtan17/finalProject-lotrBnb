@@ -51,7 +51,7 @@ function Listings() {
                                         <img
                                             src={listing.image_url}
                                             alt='img not found'
-                                            ></img>
+                                        ></img>
                                     </div>
                                     <div className='listing-right'>
                                         <h3>{listing?.name}</h3>

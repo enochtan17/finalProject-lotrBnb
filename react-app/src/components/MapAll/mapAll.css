@@ -2,3 +2,19 @@
     position: sticky;
     top: 90px;
 }
+
+.info-window p {
+    text-align: center;
+    font-family: fantasy, serif;
+    width: 75px;
+}
+
+.info-window img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.info-window p:hover, img:hover {
+    cursor: pointer;
+}
