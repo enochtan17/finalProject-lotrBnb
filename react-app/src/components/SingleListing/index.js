@@ -106,8 +106,15 @@ function SingleListing() {
                             </div>
                             <hr className='hr-title-info' ></hr>
                         </div>
-                        <p>{listing.description}</p>
-                        <p>${listing.price} / night</p>
+                        <div className='listing-bottom'>
+                            <div className='description-price'>
+                                <p>{listing.description}</p>
+                                <p>${listing.price} / night</p>
+                            </div>
+                            <div className='booking-calendar'>
+                                {/* <p>booking calendar placeholder</p> */}
+                            </div>
+                        </div>
                     </div>
                 )}
                 <div className='google-maps-div'>

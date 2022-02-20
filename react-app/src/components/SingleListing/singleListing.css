@@ -48,6 +48,7 @@
 .one-listing-body {
     display: flex;
     justify-content: space-between;
+    /* width: 44%; */
 }
 
 .one-listing-left {
@@ -82,6 +83,17 @@
 }
 
 .google-maps-div {
-    margin: 0px 5% 0px 0px;
+    margin: 0px 2% 0px 0px;
     width: 47.4%;
+}
+
+.listing-bottom {
+    display: flex;
+    justify-content: space-around;
+}
+
+.description-price {
+    display: flex;
+    flex-direction: column;
+
 }
